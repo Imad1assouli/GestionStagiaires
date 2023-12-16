@@ -1,0 +1,17 @@
+<div class="container mt-4">
+    <h3>Internship List</h3>
+  
+    <div class="card-deck">
+      <div class="card" *ngFor="let stage of stages">
+        <div class="card-body">
+          <h5 class="card-title">{{ stage.sujet }}</h5>
+          <p class="card-text">{{ stage.description }}</p>
+          <p class="card-text"><strong>Skills Demanded:</strong> {{ stage.skills }}</p>
+  
+          <!-- View Details Button -->
+          <button class="btn btn-primary" style="margin-left: 10px;">détails</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  

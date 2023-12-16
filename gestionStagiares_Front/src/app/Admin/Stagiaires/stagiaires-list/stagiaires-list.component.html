@@ -1,0 +1,28 @@
+<h3>List Utilisateurs</h3>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Prenom</th>
+            <th>Email</th>
+            <th>sujet Stage</th>
+            <th>Actions</th>
+        
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let stagiaire of stagiaires">
+            <td>{{ stagiaire.nom}}</td>
+            <td>{{ stagiaire.prenom }}</td>
+            <td>{{ stagiaire.username }}</td>
+            <td>{{ stagiaire.stage.sujet }}</td>
+            
+            <td>
+                <button  class="btn btn-info">Update</button>
+                <button *ngIf="stagiaire.id !== undefined"  class="btn btn-danger" style="margin-left: 10px;">Delete</button>
+                <button *ngIf="stagiaire.username !== undefined"  class="btn btn-info" style="margin-left: 10px;">View</button>
+                <button *ngIf="stagiaire.id !== undefined"  class="btn btn-danger" style="margin-left: 10px;">Absence</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
