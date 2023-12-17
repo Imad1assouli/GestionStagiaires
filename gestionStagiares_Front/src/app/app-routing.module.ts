@@ -8,11 +8,11 @@ import { StagesListComponent } from './Admin/Stages/stages-list/stages-list.comp
 import { StagiairesListComponent } from './Admin/Stagiaires/stagiaires-list/stagiaires-list.component';
 import { AcceuilStagiaireComponent } from './Stagiaire/acceuil-stagiaire/acceuil-stagiaire.component';
 import { ListStagesStagiaireComponent } from './Stagiaire/list-stages-stagiaire/list-stages-stagiaire.component';
-import { StatistiquesAdminDrhComponent } from './AdminDRH/statistiques-admin-drh/statistiques-admin-drh.component';
 import { StagesListDRHComponent } from './AdminDRH/gestion_stages/stages-list/stages-list.component';
 import { StagiairesListDRHComponent } from './AdminDRH/gestion-stagiaires/stagiaires-list-drh/stagiaires-list-drh.component';
 import { AdminDRHAcceuilComponent } from './AdminDRH/admin-drh-acceuil/admin-drh-acceuil.component';
 import { AddStageAdminComponent } from './Admin/Stages/add-stage-admin/add-stage-admin.component';
+import { StatistiquesAdminDRHComponent } from './AdminDRH/statistiques-admin-drh/statistiques-admin-drh.component';
 
 
 const routes: Routes = [
@@ -33,9 +33,9 @@ const routes: Routes = [
    
     // Add more child routes as needed
   ]},
-  { path: 'adminDRH', component: AdminDRHAcceuilComponent, children: [
+  { path: 'adminDrh', component: AdminDRHAcceuilComponent, children: [
+    { path: 'statsDRH', component:StatistiquesAdminDRHComponent  },
     { path: '', redirectTo: 'statsDRH', pathMatch: 'full' }, // Add a default child route
-    { path: 'statsDRH', component: StatistiquesAdminDrhComponent },
     { path: 'stagesList', component: StagesListDRHComponent },
     { path: 'stagiairesList', component: StagiairesListDRHComponent },
 ]},

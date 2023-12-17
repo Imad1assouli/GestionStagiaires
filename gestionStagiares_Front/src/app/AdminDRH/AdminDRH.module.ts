@@ -6,7 +6,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AdminDRHAcceuilComponent } from './admin-drh-acceuil/admin-drh-acceuil.component';
-import { StatistiquesAdminDrhComponent } from './statistiques-admin-drh/statistiques-admin-drh.component';
+
 import { StagesListDRHComponent } from './gestion_stages/stages-list/stages-list.component';
 import { StagiairesListDRHComponent } from './gestion-stagiaires/stagiaires-list-drh/stagiaires-list-drh.component';
 import { UpdateStagiaireAdminDRHComponent } from './gestion-stagiaires/update-stagiaire-admin-drh/update-stagiaire-admin-drh.component';
@@ -14,6 +14,7 @@ import { ViewStagiaireAdminDrhComponent } from './gestion-stagiaires/view-stagia
 import { AbsenceAdminDRHComponent } from './gestion-stagiaires/absence-admin-drh/absence-admin-drh.component';
 import { AdminDRHRouting } from './AdminDRH-routing.module';
 import { DetailsStageComponent } from './gestion_stages/details-stage/details-stage.component';
+import { StatistiquesAdminDRHComponent } from './statistiques-admin-drh/statistiques-admin-drh.component';
 
 // admin.module.ts
 @NgModule({
@@ -24,8 +25,8 @@ import { DetailsStageComponent } from './gestion_stages/details-stage/details-st
       UpdateStagiaireAdminDRHComponent,
       ViewStagiaireAdminDrhComponent,
       AbsenceAdminDRHComponent,
-      StatistiquesAdminDrhComponent,
       DetailsStageComponent,
+      StatistiquesAdminDRHComponent,
       // Include other components here
     ],
     imports: [
@@ -40,8 +41,7 @@ import { DetailsStageComponent } from './gestion_stages/details-stage/details-st
     ],
     exports: [
       AdminDRHAcceuilComponent,
-      StatistiquesAdminDrhComponent,
-    
+      StatistiquesAdminDRHComponent
       // Include other components if needed
     ],
   })

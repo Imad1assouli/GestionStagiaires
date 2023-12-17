@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { StatistiquesAdminDrhComponent } from './statistiques-admin-drh.component';
+import { StatistiquesAdminDRHComponent } from './statistiques-admin-drh.component';
 
-describe('StaitistiquesAdminDrhComponent', () => {
-  let component: StatistiquesAdminDrhComponent;
-  let fixture: ComponentFixture<StatistiquesAdminDrhComponent>;
+describe('StatistiquesAdminDRHComponent', () => {
+  let component: StatistiquesAdminDRHComponent;
+  let fixture: ComponentFixture<StatistiquesAdminDRHComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [StatistiquesAdminDrhComponent]
+      declarations: [StatistiquesAdminDRHComponent]
     });
-    fixture = TestBed.createComponent(StatistiquesAdminDrhComponent);
+    fixture = TestBed.createComponent(StatistiquesAdminDRHComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
