@@ -13,6 +13,13 @@ import { StagiairesListDRHComponent } from './AdminDRH/gestion-stagiaires/stagia
 import { AdminDRHAcceuilComponent } from './AdminDRH/admin-drh-acceuil/admin-drh-acceuil.component';
 import { AddStageAdminComponent } from './Admin/Stages/add-stage-admin/add-stage-admin.component';
 import { StatistiquesAdminDRHComponent } from './AdminDRH/statistiques-admin-drh/statistiques-admin-drh.component';
+import { UtilisateursDRHListComponent } from './ChefDRH/gestion-utilisateurs/utilisateurs-drh-list/utilisateurs-drh-list.component';
+import { StatistiquesChefDRHComponent } from './ChefDRH/statistiques-chef-drh/statistiques-chef-drh.component';
+import { CreateUtilisateurDRHComponent } from './ChefDRH/gestion-utilisateurs/create-utilisateur-drh/create-utilisateur-drh.component';
+import { StagesChefDRHListComponent } from './ChefDRH/gestion-stagesDRH/stages-chef-drh-list/stages-chef-drh-list.component';
+import { StagiairesChefDrhListComponent } from './ChefDRH/gestion-stagiaires/stagiaires-chef-drh-list/stagiaires-chef-drh-list.component';
+import { AddStageChefDRHComponent } from './ChefDRH/gestion-stagesDRH/add-stage-chef-drh/add-stage-chef-drh.component';
+import { AcceuilChefDRHComponent } from './ChefDRH/acceuil-chef-drh/acceuil-chef-drh.component';
 
 
 const routes: Routes = [
@@ -39,6 +46,16 @@ const routes: Routes = [
     { path: 'stagesList', component: StagesListDRHComponent },
     { path: 'stagiairesList', component: StagiairesListDRHComponent },
 ]},
+{ path: 'chefDrh', component: AcceuilChefDRHComponent, children: [
+   { path: 'stats', component: StatistiquesChefDRHComponent },
+   { path: '', redirectTo: 'stats', pathMatch: 'full' },
+   { path: 'listUtlisaeurs', component: UtilisateursDRHListComponent },
+   { path: 'ajouterUtilisateur', component: CreateUtilisateurDRHComponent },
+   { path: 'listStages', component: StagesChefDRHListComponent },
+   { path: 'listStagiaires', component: StagiairesChefDrhListComponent },
+   { path: 'addStage', component: AddStageChefDRHComponent },
+]},
+
 
   // Add more routes as needed
 ];

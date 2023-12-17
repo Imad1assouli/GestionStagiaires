@@ -1,0 +1,66 @@
+<!-- admin-acceuil.component.html -->
+<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+    <a class="navbar-brand mt-2" routerLink="/chefDrh/stats" routerLinkActive="active">
+      <img src="your-logo.png" width="90px" alt="Your Logo">
+    </a>
+    <h4 class="bi bi-person-circle nav-link text-nowrap" style="color: aliceblue;">Imad assouli</h4>
+    <ul class="navbar-nav px-3">
+      <li class="nav-item text-nowrap">
+        <a href="#" class="nav-link">Se Deconnecter</a>
+      </li>
+    </ul>
+  </nav>
+  
+  <div class="container-fluid">
+    <div class="row">
+      <!-- Sidebar -->
+      <nav class="col-md-2 d-md-block bg-light sidebar">
+        <div class="sidebar-sticky">
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/chefDrh/stats" routerLinkActive="active">
+                <span class="bi bi-clipboard-data"></span>
+                Statistiques
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/chefDrh/listUtlisaeurs" routerLinkActive="active">
+                <span class="bi bi-people-fill"></span>
+                Utilisateurs
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/chefDrh/ajouterUtilisateur" routerLinkActive="active">
+                <span class="bi bi-person-fill-add"></span>
+                ajouter Utilisateur
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/chefDrh/listStagiaires" routerLinkActive="active">
+                <span class="bi bi-people-fill"></span>
+                Stagiaires
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/chefDrh/listStages" routerLinkActive="active">
+                <span class="bi bi-file-earmark-text"></span>
+                Stages
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/chefDrh/addStage" routerLinkActive="active">
+                <span class="bi bi-file-earmark-plus"></span>
+                Ajouter Stage
+              </a>
+            </li>
+            <!-- Add more sidebar items with icons as needed -->
+          </ul>
+        </div>
+      </nav>
+  
+      <!-- Content -->
+      <main class="col-md-10 ms-sm-auto px-4">
+        <router-outlet></router-outlet>
+      </main>
+    </div>
+  
