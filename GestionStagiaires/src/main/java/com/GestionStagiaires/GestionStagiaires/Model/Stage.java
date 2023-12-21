@@ -19,7 +19,10 @@ public class Stage {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long stageId;
     private String sujet;
+    private String description;
+    @Temporal(TemporalType.DATE)
     private Date startDate;
+    @Temporal(TemporalType.DATE)
     private Date endDate;
     private String division;
     @Enumerated(EnumType.STRING)

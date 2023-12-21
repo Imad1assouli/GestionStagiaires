@@ -6,9 +6,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
+
 public interface EncadrantService {
-    Encadrant saveEncadrant(Encadrant encadrant);
+    void saveEncadrant(Encadrant encadrant);
     Encadrant getEncadrantById(Long encadrantId);
     List<Encadrant> getAllEncadrants();
     void deleteEncadrant(Long encadrantId);

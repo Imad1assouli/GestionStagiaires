@@ -16,6 +16,7 @@ import { CreateUtilisateurDRHComponent } from './ChefDRH/gestion-utilisateurs/cr
 import { UpdateUtilisateurDRHComponent } from './ChefDRH/gestion-utilisateurs/update-utilisateur-drh/update-utilisateur-drh.component';
 import { ViewUtilisateurDRHComponent } from './ChefDRH/gestion-utilisateurs/view-utilisateur-drh/view-utilisateur-drh.component';
 import { ChefDRHModule } from './ChefDRH/ChefDRH.module';
+import { LoginComponent } from './Login/login/login.component';
 
 
 
@@ -23,6 +24,7 @@ import { ChefDRHModule } from './ChefDRH/ChefDRH.module';
 @NgModule({
   declarations: [
     AppComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

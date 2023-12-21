@@ -1,16 +1,17 @@
 package com.GestionStagiaires.GestionStagiaires.Service.Interfaces;
 
 import com.GestionStagiaires.GestionStagiaires.Enum.StageStatus;
+import com.GestionStagiaires.GestionStagiaires.Enum.StageType;
 import com.GestionStagiaires.GestionStagiaires.Model.Stage;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
 
-@Service
+
 public interface StageService {
 
-    Stage saveStage(Stage stage);
+    void saveStage(Stage stage);
     Stage getStageById(Long stageId);
     List<Stage> getAllStages();
     void deleteStage(Long stageId);
