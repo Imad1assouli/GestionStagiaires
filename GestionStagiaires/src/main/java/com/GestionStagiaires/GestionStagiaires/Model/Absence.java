@@ -16,10 +16,14 @@ public class Absence {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long stagiaireId;
     private Date dateAbsence;
 
     @ManyToOne
     @JoinColumn(name = "stagiaire_id")
     private Stagiaire stagiaire;
+
+    public Absence(Date dateAbsence,Stagiaire stagiaire ){
+        this.dateAbsence=dateAbsence;
+        this.stagiaire=stagiaire;
+    }
 }

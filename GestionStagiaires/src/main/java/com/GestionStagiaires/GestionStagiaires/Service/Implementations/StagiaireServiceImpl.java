@@ -1,19 +1,39 @@
 package com.GestionStagiaires.GestionStagiaires.Service.Implementations;
 
+import com.GestionStagiaires.GestionStagiaires.Model.Stage;
 import com.GestionStagiaires.GestionStagiaires.Model.Stagiaire;
+import com.GestionStagiaires.GestionStagiaires.Repository.StageRepository;
+import com.GestionStagiaires.GestionStagiaires.Repository.StagiaireRepository;
 import com.GestionStagiaires.GestionStagiaires.Service.Interfaces.StagiaireService;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
+@Service
+@Slf4j
 public class StagiaireServiceImpl implements StagiaireService {
+
+    private StagiaireRepository stagiaireRepository;
+
+    public StagiaireServiceImpl (StagiaireRepository stagiaireRepository){
+        this.stagiaireRepository=stagiaireRepository;
+    }
+
     /**
      * @param stagiaire
-     * @return
      */
     @Override
-    public Stagiaire saveStagiaire(Stagiaire stagiaire) {
-        return null;
+    public void saveStagiaire(Stagiaire stagiaire) {
+        try {
+            stagiaireRepository.save(stagiaire);
+            log.info("Stagiaire creé avec succés");
+        } catch (Exception e) {
+            throw new RuntimeException("Error saving stagiaire: " + e.getMessage(), e);
+        }
     }
 
     /**
@@ -22,6 +42,14 @@ public class StagiaireServiceImpl implements StagiaireService {
      */
     @Override
     public Stagiaire getStagiaireById(Long stagiaireId) {
+      Optional<Stagiaire> stagiaire= stagiaireRepository.findById(stagiaireId);
+        if(stagiaire.isPresent()){
+            log.info("Stagiaire trouvé avec l ' ID "+ stagiaireId );
+            return stagiaire.get();
+        }
+        else{
+            log.warn("Aucun Stagiaire trouvé avec l ' ID "+ stagiaireId);
+        }
         return null;
     }
 
@@ -30,7 +58,15 @@ public class StagiaireServiceImpl implements StagiaireService {
      */
     @Override
     public List<Stagiaire> getAllStagiaires() {
-        return null;
+        List<Stagiaire> listeStagiaires =stagiaireRepository.findAll();
+        if (!listeStagiaires.isEmpty()){
+            log.info("Liste des stagiaire trouvé avec succés ");
+            return listeStagiaires;
+        }
+        else {
+            log.warn("Aucun Stagiaire trouvé ");
+        }
+        return Collections.emptyList();
     }
 
     /**
@@ -38,7 +74,12 @@ public class StagiaireServiceImpl implements StagiaireService {
      */
     @Override
     public void deleteStagiaire(Long stagiaireId) {
-
+        try {
+            stagiaireRepository.deleteById(stagiaireId);
+            log.info("Stagiaire supprimé avec succés");
+        } catch (Exception e) {
+            throw new RuntimeException("Error deleting stagiaire: " + e.getMessage(), e);
+        }
     }
 
     /**
@@ -47,7 +88,15 @@ public class StagiaireServiceImpl implements StagiaireService {
      */
     @Override
     public List<Stagiaire> getStagiairesByNom(String nom) {
-        return null;
+        List<Stagiaire> listeStagiaires =stagiaireRepository.findByNom(nom);
+        if (!listeStagiaires.isEmpty()){
+            log.info("Liste des stagiaire avec le nom "+nom +" trouvé avec succés ");
+            return listeStagiaires;
+        }
+        else {
+            log.warn("Aucun Stagiaire trouvé avec le nom "+nom);
+        }
+        return Collections.emptyList();
     }
 
     /**
@@ -56,7 +105,15 @@ public class StagiaireServiceImpl implements StagiaireService {
      */
     @Override
     public List<Stagiaire> getStagiairesByFiliere(String filiere) {
-        return null;
+        List<Stagiaire> listeStagiaires =stagiaireRepository.findByFiliere(filiere);
+        if (!listeStagiaires.isEmpty()){
+            log.info("Liste des stagiaire dans la filiére "+filiere +" trouvé avec succés ");
+            return listeStagiaires;
+        }
+        else {
+            log.warn("Aucun Stagiaire trouvé dans la filiére "+filiere);
+        }
+        return Collections.emptyList();
     }
 
     /**
@@ -65,16 +122,33 @@ public class StagiaireServiceImpl implements StagiaireService {
      */
     @Override
     public List<Stagiaire> getStagiairesByEtablissement(String etablissement) {
-        return null;
+        List<Stagiaire> listeStagiaires =stagiaireRepository.findByEtablissement(etablissement);
+        if (!listeStagiaires.isEmpty()){
+            log.info("Liste des stagiaire dans l' établissement "+etablissement +" trouvé avec succés ");
+            return listeStagiaires;
+        }
+        else {
+            log.warn("Aucun Stagiaire trouvé dans l' établissement "+etablissement);
+        }
+        return Collections.emptyList();
     }
 
     /**
-     * @param startDate
-     * @param endDate
-     * @return
+     *@param stagiaireId
+     * @return stageSujet
      */
+
     @Override
-    public List<Stagiaire> getStagiairesByDateNaissanceBetween(Date startDate, Date endDate) {
-        return null;
+    public String getStageNameByStagiaireId(Long stagiaireId){
+        Optional<Stagiaire> stagiaire = stagiaireRepository.findById(stagiaireId);
+
+        if (stagiaire.isPresent()  && stagiaire.get().getStage() != null) {
+            Stage stage = stagiaire.get().getStage();
+            log.info("Stage trouvé pour stagiaire avec id "+stagiaireId);
+            return stage.getSujet();
+        }
+
+        return "Aucun stage trouvé pour ce stagiaire.";
     }
+
 }

@@ -26,7 +26,6 @@ public class Stage {
     private StageType type; // Enum for Affecté, Non Affecté
     @Enumerated(EnumType.STRING)
     private StageStatus status;
-
     @ManyToOne
     @JoinColumn(name = "encadrant_id")
     private Encadrant encadrant;
@@ -36,4 +35,5 @@ public class Stage {
 
     @OneToMany(mappedBy = "stage", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Absence> absences;
+
 }

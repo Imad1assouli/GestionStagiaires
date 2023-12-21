@@ -1,36 +1,77 @@
 package com.GestionStagiaires.GestionStagiaires.Service.Implementations;
 
 import com.GestionStagiaires.GestionStagiaires.Model.Absence;
+import com.GestionStagiaires.GestionStagiaires.Model.Stagiaire;
+import com.GestionStagiaires.GestionStagiaires.Repository.AbsenceRepository;
+import com.GestionStagiaires.GestionStagiaires.Repository.StagiaireRepository;
 import com.GestionStagiaires.GestionStagiaires.Service.Interfaces.AbsenceService;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
+@Service
+@Slf4j
 public class AbsenceServiceImpl implements AbsenceService {
+
+    private AbsenceRepository absenceRepository;
+    private StagiaireRepository stagiaireRepository;
+
+
+    public AbsenceServiceImpl(AbsenceRepository absenceRepository, StagiaireRepository stagiaireRepository) {
+        this.absenceRepository = absenceRepository;
+        this.stagiaireRepository = stagiaireRepository;
+    }
+
     /**
      * @param absence
-     * @return
      */
     @Override
-    public Absence saveAbsence(Absence absence) {
-        return null;
+    public void saveAbsence(Absence absence) {
+        try {
+            absenceRepository.save(absence);
+            log.info("Absence sauvegardée avec succés");
+        } catch (Exception e) {
+            throw new RuntimeException("Error saving absence: " + e.getMessage(), e);
+        }
+
     }
 
     /**
      * @param absenceId
-     * @return
+     * @return absence
      */
     @Override
     public Absence getAbsenceById(Long absenceId) {
+
+        Optional<Absence> absence = absenceRepository.findById(absenceId);
+        if (absence.isPresent()) {
+            log.info("absence trouvée avec l ' ID " + absenceId);
+            return absence.get();
+        } else {
+            log.warn("Aucune absence trouvé avec l ' ID " + absenceId);
+        }
+
         return null;
     }
 
     /**
-     * @return
+     * @return liste des absencses
      */
     @Override
     public List<Absence> getAllAbsences() {
-        return null;
+
+        List<Absence> listeAbsence = absenceRepository.findAll();
+        if (!listeAbsence.isEmpty()) {
+            log.info("Liste des absences trouvé avec succés ");
+            return listeAbsence;
+        } else {
+            log.warn("Aucun absence trouvée ");
+        }
+        return Collections.emptyList();
     }
 
     /**
@@ -39,15 +80,29 @@ public class AbsenceServiceImpl implements AbsenceService {
     @Override
     public void deleteAbsence(Long absenceId) {
 
+        try {
+            absenceRepository.deleteById(absenceId);
+            log.info("Absence supprimé avec succés");
+        } catch (Exception e) {
+            throw new RuntimeException("Error deleting absence: " + e.getMessage(), e);
+        }
+
     }
 
     /**
      * @param stagiaireId
      * @param startDate
-     * @param endDate
      */
     @Override
-    public void marquerAbsence(Long stagiaireId, Date startDate, Date endDate) {
+    public void marquerAbsence(Long stagiaireId, Date startDate) {
+        Optional<Stagiaire> stagiaireOptional = stagiaireRepository.findById(stagiaireId);
+        if (stagiaireOptional.isPresent()) {
+            Absence absence = new Absence(startDate, stagiaireOptional.get());
+            absenceRepository.save(absence);
+            log.info("absence marquée avec succés");
+        } else {
+            log.error("aucun stagiaire avec l id " + stagiaireId);
+        }
 
     }
 
@@ -57,16 +112,18 @@ public class AbsenceServiceImpl implements AbsenceService {
      */
     @Override
     public List<Absence> getAbsencesByStagiaire(Long stagiaireId) {
-        return null;
-    }
 
-    /**
-     * @param startDate
-     * @param endDate
-     * @return
-     */
-    @Override
-    public List<Absence> getAbsencesByDateBetween(Date startDate, Date endDate) {
-        return null;
+        Optional<Stagiaire> stagiaireOptional = stagiaireRepository.findById(stagiaireId);
+        if (stagiaireOptional.isPresent()) {
+            Stagiaire stagiaire = stagiaireOptional.get();
+            List<Absence> absences = stagiaire.getAbsences();
+            log.info("Absences du stagiaire " + stagiaireId + " trouvées avec succès.");
+            return absences;
+        } else {
+            log.warn("Aucun stagiaire trouvé avec l'ID " + stagiaireId);
+        }
+
+        return Collections.emptyList();
     }
 }
+
