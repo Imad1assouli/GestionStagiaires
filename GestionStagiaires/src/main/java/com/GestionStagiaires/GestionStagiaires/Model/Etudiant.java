@@ -18,6 +18,7 @@ public class Etudiant {
     @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "etudiant_seq")
     @SequenceGenerator(name = "etudiant_seq", allocationSize = 1)
     private Long etudiantId;
+
     private String nom;
     private String prenom;
     private String cin;

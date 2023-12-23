@@ -16,15 +16,14 @@ import java.util.List;
 @PrimaryKeyJoinColumn(name = "etudiant_id")
 public class Stagiaire extends Etudiant {
 
-    @OneToMany(mappedBy = "stagiaire", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "stagiaire", cascade = CascadeType.ALL, fetch = FetchType.LAZY) // Fix mappedBy attribute
     private List<Absence> absences;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "stage_id")
     private Stage stage;
 
-    public Stagiaire (){
+    public Stagiaire() {
         super();
     }
-
 }

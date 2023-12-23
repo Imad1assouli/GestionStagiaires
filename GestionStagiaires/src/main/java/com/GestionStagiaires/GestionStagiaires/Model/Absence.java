@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
-
 import java.util.Date;
 
 @Entity
@@ -27,8 +26,8 @@ public class Absence {
     private Stage stage;
 
 
-    public Absence(Date dateAbsence,Stagiaire stagiaire ){
-        this.dateAbsence=dateAbsence;
-        this.stagiaire=stagiaire;
+    public Absence(Date dateAbsence, Stagiaire stagiaire) {
+        this.dateAbsence = dateAbsence;
+        this.stagiaire = stagiaire;
     }
 }

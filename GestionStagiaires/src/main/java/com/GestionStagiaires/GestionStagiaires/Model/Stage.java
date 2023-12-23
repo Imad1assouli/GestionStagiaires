@@ -33,10 +33,10 @@ public class Stage {
     @JoinColumn(name = "encadrant_id")
     private Encadrant encadrant;
 
-    @OneToMany(mappedBy = "stage", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "stage", fetch = FetchType.LAZY)
     private List<Stagiaire> stagiaires;
 
-    @OneToMany(mappedBy = "stage", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "stage", fetch = FetchType.LAZY)
     private List<Absence> absences;
 
 }

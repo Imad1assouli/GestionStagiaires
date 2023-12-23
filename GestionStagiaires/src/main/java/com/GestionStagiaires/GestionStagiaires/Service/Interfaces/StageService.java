@@ -13,6 +13,8 @@ public interface StageService {
 
     void saveStage(Stage stage);
     Stage getStageById(Long stageId);
+
+    void updateStage(Long stageId,Stage stage);
     List<Stage> getAllStages();
     void deleteStage(Long stageId);
     void affecterStageAStagiaire(Long stageId, Long stagiaireId);

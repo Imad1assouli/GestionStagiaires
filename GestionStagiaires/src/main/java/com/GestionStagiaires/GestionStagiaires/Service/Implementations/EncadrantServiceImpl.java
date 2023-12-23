@@ -34,6 +34,20 @@ public class EncadrantServiceImpl implements EncadrantService {
             throw new RuntimeException("Erreur lors de la sauvegarde de l'encadrant : " + e.getMessage(), e);
         }
     }
+    public void updateEncadrant(Long encadrantId, Encadrant updatedEncadrant) {
+        Optional<Encadrant> optionalEncadrant = encadrantRepository.findById(encadrantId);
+        if (optionalEncadrant.isPresent()) {
+            Encadrant existingEncadrant = optionalEncadrant.get();
+            existingEncadrant.setNom(updatedEncadrant.getNom());
+            existingEncadrant.setPrenom(updatedEncadrant.getPrenom());
+            existingEncadrant.setEmail(updatedEncadrant.getEmail());
+            existingEncadrant.setTelephone(updatedEncadrant.getTelephone());
+            existingEncadrant.setEncadrantType(updatedEncadrant.getEncadrantType());
+            encadrantRepository.save(existingEncadrant);
+        } else {
+            log.error("Encadrant introuvable.");
+        }
+    }
 
 
     /**

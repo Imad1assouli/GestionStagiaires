@@ -35,6 +35,26 @@ public class StageServiceImpl implements StageService {
         }
     }
 
+    public void updateStage(Long stageId ,Stage updatedStage) {
+        Optional<Stage> optionalStage = stageRepository.findById(stageId);
+        if (optionalStage.isPresent()) {
+            Stage existingStage = optionalStage.get();
+            existingStage.setDescription(updatedStage.getDescription());
+            existingStage.setStatus(updatedStage.getStatus());
+            existingStage.setEncadrant(updatedStage.getEncadrant());
+            existingStage.setType(updatedStage.getType());
+            existingStage.setStartDate(updatedStage.getStartDate());
+            existingStage.setEndDate(updatedStage.getEndDate());
+            existingStage.setDivision(updatedStage.getDivision());
+            existingStage.setSujet(updatedStage.getSujet());
+            stageRepository.save(existingStage);
+        } else {
+            log.error("Stage introuvable.");
+        }
+    }
+
+
+
     /**
      * @param stageId
      * @return
@@ -101,6 +121,10 @@ public class StageServiceImpl implements StageService {
         if (stageOptional.isPresent() && stagiaireOptional.isPresent()) {
             Stage stage = stageOptional.get();
             Stagiaire stagiaire = stagiaireOptional.get();
+
+            stage.getStagiaires().add(stagiaire);
+            stagiaire.setStage(stage);
+            stagiaireRepository.save(stagiaire);
 
             stage.setType(StageType.Affecte);
             stageRepository.save(stage);

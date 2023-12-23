@@ -1,6 +1,7 @@
 package com.GestionStagiaires.GestionStagiaires.Service.Implementations;
 
 import com.GestionStagiaires.GestionStagiaires.Model.Absence;
+import com.GestionStagiaires.GestionStagiaires.Model.Stage;
 import com.GestionStagiaires.GestionStagiaires.Model.Stagiaire;
 import com.GestionStagiaires.GestionStagiaires.Repository.AbsenceRepository;
 import com.GestionStagiaires.GestionStagiaires.Repository.StagiaireRepository;

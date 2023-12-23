@@ -11,6 +11,7 @@ public interface StagiaireRepository extends JpaRepository<Stagiaire,Long> {
     Stagiaire findByCin(String cin);
     Stagiaire findByPrenom(String username);
 
+
     List<Stagiaire> findByNom(String nom);
 
     List<Stagiaire> findByFiliere(String filiere);
