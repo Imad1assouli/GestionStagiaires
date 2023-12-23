@@ -117,7 +117,7 @@ public class StageServiceImpl implements StageService {
      */
     @Override
     public List<Stage> getStagesByEncadrant(Long encadrantId) {
-        List<Stage> stages = stageRepository.findByEncadrantId(encadrantId);
+        List<Stage> stages = stageRepository.findByEncadrant_EncadrantId(encadrantId);
         if (!stages.isEmpty()) {
 
             log.info("Liste de stages récupérée pour l'encadrant avec l'ID : " + encadrantId);

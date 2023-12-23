@@ -10,7 +10,7 @@ import java.util.List;
 
 @Repository
 public interface StageRepository extends JpaRepository<Stage,Long> {
-    List<Stage> findByEncadrantId(Long encadrantId);
+    List<Stage> findByEncadrant_EncadrantId(Long encadrantId);
     List<Stage> findByStatus(StageStatus status);
     List<Stage> findByStartDateBetween(Date startDate, Date endDate);
     List<Stage> findByDivision(String division);

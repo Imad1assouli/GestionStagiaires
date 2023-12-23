@@ -22,6 +22,11 @@ public class Absence {
     @JoinColumn(name = "stagiaire_id")
     private Stagiaire stagiaire;
 
+    @ManyToOne
+    @JoinColumn(name = "stage_id")
+    private Stage stage;
+
+
     public Absence(Date dateAbsence,Stagiaire stagiaire ){
         this.dateAbsence=dateAbsence;
         this.stagiaire=stagiaire;
