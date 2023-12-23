@@ -18,5 +18,6 @@ public interface StagiaireService {
 
     String getStageNameByStagiaireId(Long stagiaireId);
 
+    void updateStagiaire(Long stagiaireId,Stagiaire stagiaire);
 
 }

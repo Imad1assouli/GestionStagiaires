@@ -150,5 +150,28 @@ public class StagiaireServiceImpl implements StagiaireService {
 
         return "Aucun stage trouvé pour ce stagiaire.";
     }
+    @Override
+    public void updateStagiaire(Long stagiaireId, Stagiaire newStagiaire) {
+        Optional<Stagiaire> oldStagiaire = stagiaireRepository.findById(stagiaireId);
+        if (oldStagiaire.isPresent()) {
+            Stagiaire existingStagiaire = oldStagiaire.get();
+
+
+            existingStagiaire.setNom(newStagiaire.getNom());
+            existingStagiaire.setPrenom(newStagiaire.getPrenom());
+            existingStagiaire.setCin(newStagiaire.getCin());
+            existingStagiaire.setEtablissement(newStagiaire.getEtablissement());
+            existingStagiaire.setFiliere(newStagiaire.getFiliere());
+            existingStagiaire.setAdresse(newStagiaire.getAdresse());
+            existingStagiaire.setEmail(newStagiaire.getEmail());
+            existingStagiaire.setTelephone(newStagiaire.getTelephone());
+            existingStagiaire.setDateNaissance(newStagiaire.getDateNaissance());
+            stagiaireRepository.save(existingStagiaire);
+            log.info("Stagiaire modifié avec succés");
+        }
+        else {
+            log.warn("aucun Stagiaire existant avec cet ID "+stagiaireId);
+        }
+    }
 
 }
