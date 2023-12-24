@@ -9,8 +9,12 @@ import java.util.List;
 
 public interface StagiaireService {
     void saveStagiaire(Stagiaire stagiaire);
+    void demandeStage(Long stageId,Stagiaire stagiaire);
     Stagiaire getStagiaireById(Long stagiaireId);
     List<Stagiaire> getAllStagiaires();
+    List<Stagiaire> getAllCandidats();
+    List<Stagiaire> getAllCandidatsStage(Long stageId);
+    List<Stagiaire> getAllStagiairesStage(Long stageId);
     void deleteStagiaire(Long stagiaireId);
     List<Stagiaire> getStagiairesByNom(String nom);
     List<Stagiaire> getStagiairesByFiliere(String filiere);
@@ -18,6 +22,8 @@ public interface StagiaireService {
 
     String getStageNameByStagiaireId(Long stagiaireId);
 
+
     void updateStagiaire(Long stagiaireId,Stagiaire stagiaire);
+
 
 }

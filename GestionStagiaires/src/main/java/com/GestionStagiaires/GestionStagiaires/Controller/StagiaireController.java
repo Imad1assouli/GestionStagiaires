@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/stagiaire")
 public class StagiaireController {
     private final StageService stageService;
     private final StagiaireService stagiaireService;
@@ -23,9 +23,10 @@ public class StagiaireController {
     public List<Stage> listerStages() {
         return stageService.getAllStages();
     }
-    @PostMapping("/stagiaires")
-    public void saveStagiaire(@RequestBody Stagiaire stagiaire) {
-        stagiaireService.saveStagiaire(stagiaire);
+
+    @PostMapping("/stages/demande/{stageId}")
+    public void demandeStage(@PathVariable Long stageId, @RequestBody Stagiaire stagiaire) {
+        stagiaireService.demandeStage(stageId, stagiaire);
     }
 
 }

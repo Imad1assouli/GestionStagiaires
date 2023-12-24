@@ -1,5 +1,6 @@
 package com.GestionStagiaires.GestionStagiaires.Model;
 
+import com.GestionStagiaires.GestionStagiaires.Enum.StagiaireStatus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,17 +14,50 @@ import java.util.List;
 @Setter
 @Getter
 @AllArgsConstructor
-@PrimaryKeyJoinColumn(name = "etudiant_id")
-public class Stagiaire extends Etudiant {
+public class Stagiaire  {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long stagiaireId;
 
-    @OneToMany(mappedBy = "stagiaire", cascade = CascadeType.ALL, fetch = FetchType.LAZY) // Fix mappedBy attribute
+    private String nom;
+    private String prenom;
+    private String cin;
+    private String etablissement;
+    private String filiere;
+    private String adresse;
+    private String email;
+    private String telephone;
+    private Date dateNaissance;
+    private String sujetDemande;
+    private Date dateDemande;
+
+    @Enumerated(EnumType.STRING)
+    private StagiaireStatus stagiaireStatus;
+
+    @OneToMany(mappedBy = "stagiaire", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Absence> absences;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne()
     @JoinColumn(name = "stage_id")
     private Stage stage;
 
     public Stagiaire() {
-        super();
+        this.stagiaireStatus=StagiaireStatus.CANDIDAT;
+    }
+
+    public Stagiaire(String nom, String prenom, String cin, String etablissement, String filiere, String adresse, String email, String telephone, Date dateNaissance, String sujetDemande, Date dateDemande) {
+        this.nom = nom;
+        this.prenom = prenom;
+        this.cin = cin;
+        this.etablissement = etablissement;
+        this.filiere = filiere;
+        this.adresse = adresse;
+        this.email = email;
+        this.telephone = telephone;
+        this.dateNaissance = dateNaissance;
+        this.sujetDemande = sujetDemande;
+        this.dateDemande = dateDemande;
+        this.stagiaireStatus=StagiaireStatus.CANDIDAT;
+
     }
 }

@@ -1,6 +1,7 @@
 package com.GestionStagiaires.GestionStagiaires.Repository;
 
 import com.GestionStagiaires.GestionStagiaires.Enum.StageStatus;
+import com.GestionStagiaires.GestionStagiaires.Enum.StagiaireStatus;
 import com.GestionStagiaires.GestionStagiaires.Model.Stage;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

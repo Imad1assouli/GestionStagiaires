@@ -75,6 +75,19 @@ public class ChefDRHController {
     public List<Stagiaire> listerStagiaires() {
         return stagiaireService.getAllStagiaires();
     }
+    @GetMapping("/candidats")
+    public List<Stagiaire> getAllCandidats() {
+        return stagiaireService.getAllCandidats();
+    }
+    @GetMapping("/candidats/stage/{stageId}")
+    public List<Stagiaire> getAllCandidatsStage(@PathVariable Long stageId) {
+        return stagiaireService.getAllCandidatsStage(stageId);
+    }
+
+    @GetMapping("/stagiaires/stage/{stageId}")
+    public List<Stagiaire> getAllStagiairesStage(@PathVariable Long stageId) {
+        return stagiaireService.getAllStagiairesStage(stageId);
+    }
 
     @PutMapping("/stagiaires/update")
     public void updateStagiaire(@RequestParam Long stagiaireId,@RequestBody Stagiaire stagiaire){

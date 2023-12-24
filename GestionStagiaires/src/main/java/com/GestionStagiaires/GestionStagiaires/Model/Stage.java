@@ -5,6 +5,7 @@ import com.GestionStagiaires.GestionStagiaires.Enum.StageType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Date;
@@ -12,6 +13,7 @@ import java.util.List;
 
 @Entity
 @AllArgsConstructor
+@NoArgsConstructor
 @Setter
 @Getter
 public class Stage {
@@ -33,10 +35,10 @@ public class Stage {
     @JoinColumn(name = "encadrant_id")
     private Encadrant encadrant;
 
-    @OneToMany(mappedBy = "stage", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "stage")
     private List<Stagiaire> stagiaires;
 
-    @OneToMany(mappedBy = "stage", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "stage")
     private List<Absence> absences;
 
 }

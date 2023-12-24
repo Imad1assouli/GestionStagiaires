@@ -12,16 +12,18 @@ import java.util.Date;
 import java.util.List;
 
 @RestController
-@RequestMapping("/admin-drh")
+@RequestMapping("/api/adminDrh")
 public class AdminDRHController {
+
     private final StagiaireService stagiaireService;
     private final StageService stageService;
     private final AbsenceService absenceService;
 
-    public  AdminDRHController(StagiaireService stagiaireService,StageService stageService,AbsenceService absenceService) {
-        this.stageService=stageService;
+    @Autowired
+    public AdminDRHController(StagiaireService stagiaireService, StageService stageService, AbsenceService absenceService) {
+        this.stageService = stageService;
         this.stagiaireService = stagiaireService;
-        this.absenceService=absenceService;
+        this.absenceService = absenceService;
     }
 
     @GetMapping("/stagiaires")
@@ -29,11 +31,25 @@ public class AdminDRHController {
         return stagiaireService.getAllStagiaires();
     }
 
+
+    @GetMapping("/candidats")
+    public List<Stagiaire> getAllCandidats() {
+        return stagiaireService.getAllCandidats();
+    }
+
     @GetMapping("/stagiaire/{id}")
     public Stagiaire getStagiaireById(@PathVariable Long id) {
         return stagiaireService.getStagiaireById(id);
     }
+    @GetMapping("/candidats/stage/{stageId}")
+    public List<Stagiaire> getAllCandidatsStage(@PathVariable Long stageId) {
+        return stagiaireService.getAllCandidatsStage(stageId);
+    }
 
+    @GetMapping("/stagiaires/stage/{stageId}")
+    public List<Stagiaire> getAllStagiairesStage(@PathVariable Long stageId) {
+        return stagiaireService.getAllStagiairesStage(stageId);
+    }
     @PostMapping("/stagiaire")
     public void saveStagiaire(@RequestBody Stagiaire stagiaire) {
         stagiaireService.saveStagiaire(stagiaire);
@@ -65,10 +81,9 @@ public class AdminDRHController {
         stageService.affecterStageAStagiaire(stageId,StagiaireId);
 
    }
-
-  @PutMapping("/stagiaires/update")
-    public void updateStagiaire(@RequestParam Long stagiaireId,@RequestBody Stagiaire stagiaire){
-        stagiaireService.updateStagiaire(stagiaireId,stagiaire);
-  }
+    @PutMapping("/stagiaires/update")
+    public void updateStagiaire(@RequestParam Long stagiaireId, @RequestBody Stagiaire stagiaire) {
+        stagiaireService.updateStagiaire(stagiaireId, stagiaire);
+    }
 
 }

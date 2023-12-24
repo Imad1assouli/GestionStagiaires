@@ -2,6 +2,7 @@ package com.GestionStagiaires.GestionStagiaires.Service.Implementations;
 
 import com.GestionStagiaires.GestionStagiaires.Enum.StageStatus;
 import com.GestionStagiaires.GestionStagiaires.Enum.StageType;
+import com.GestionStagiaires.GestionStagiaires.Enum.StagiaireStatus;
 import com.GestionStagiaires.GestionStagiaires.Model.Stage;
 import com.GestionStagiaires.GestionStagiaires.Model.Stagiaire;
 import com.GestionStagiaires.GestionStagiaires.Repository.StageRepository;
@@ -124,6 +125,7 @@ public class StageServiceImpl implements StageService {
 
             stage.getStagiaires().add(stagiaire);
             stagiaire.setStage(stage);
+            stagiaire.setStagiaireStatus(StagiaireStatus.STAGIAIRE);
             stagiaireRepository.save(stagiaire);
 
             stage.setType(StageType.Affecte);

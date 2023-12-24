@@ -10,6 +10,7 @@ import com.GestionStagiaires.GestionStagiaires.Service.Interfaces.EncadrantServi
 import com.GestionStagiaires.GestionStagiaires.Service.Interfaces.StageService;
 import com.GestionStagiaires.GestionStagiaires.Service.Interfaces.StagiaireService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
@@ -40,9 +41,23 @@ public class AdminController {
         return stagiaireService.getAllStagiaires();
     }
 
-    @GetMapping("/stagiaires/{id}")
-    public Stagiaire getStagiaireById(@PathVariable Long id) {
-        return stagiaireService.getStagiaireById(id);
+    @GetMapping("/candidats")
+    public List<Stagiaire> getAllCandidats() {
+        return stagiaireService.getAllCandidats();
+    }
+    @GetMapping("/stagiaires/{stageId}")
+    public Stagiaire getStagiaireById(@PathVariable Long stageId) {
+        return stagiaireService.getStagiaireById(stageId);
+    }
+
+    @GetMapping("/candidats/stage/{stageId}")
+    public List<Stagiaire> getAllCandidatsStage(@PathVariable Long stageId) {
+        return stagiaireService.getAllCandidatsStage(stageId);
+    }
+
+    @GetMapping("/stagiaires/stage/{stageId}")
+    public List<Stagiaire> getAllStagiairesStage(@PathVariable Long stageId) {
+        return stagiaireService.getAllStagiairesStage(stageId);
     }
 
     @PutMapping("/stagiaires/update")
@@ -77,13 +92,24 @@ public class AdminController {
     }
 
     @GetMapping("/stages")
-    public List<Stage> listerStages() {
+    public List<Stage> listAllStages() {
         return stageService.getAllStages();
     }
 
     @GetMapping("/stages/{stageId}")
-    public Stage getStage(@PathVariable Long stageId) {
+    public Stage getStageById(@PathVariable Long stageId) {
         return stageService.getStageById(stageId);
+    }
+
+    @GetMapping("/stages/status/{status}")
+    public List<Stage> getStagesByStatus(@PathVariable StageStatus status) {
+        return stageService.getStagesByStatus(status);
+    }
+
+    @GetMapping("/stages/date-between")
+    public List<Stage> getStagesByDateBetween(@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date startDate,
+                                              @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date endDate) {
+        return stageService.getStagesByDateBetween(startDate, endDate);
     }
     // gestion encadrants
     @PostMapping("/encadrants")
