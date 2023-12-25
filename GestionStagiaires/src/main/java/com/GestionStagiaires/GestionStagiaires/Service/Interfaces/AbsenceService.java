@@ -17,5 +17,4 @@ public interface AbsenceService  {
     void marquerAbsence(Long stagiaireId, Date startDate);
     List<Absence> getAbsencesByStagiaire(Long stagiaireId);
 
-
 }

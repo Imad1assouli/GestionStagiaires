@@ -1,5 +1,6 @@
 package com.GestionStagiaires.GestionStagiaires.Service.Implementations;
 
+import com.GestionStagiaires.GestionStagiaires.Enum.UserType;
 import com.GestionStagiaires.GestionStagiaires.Model.Stagiaire;
 import com.GestionStagiaires.GestionStagiaires.Model.User;
 import com.GestionStagiaires.GestionStagiaires.Repository.UserRepository;
@@ -64,6 +65,7 @@ public class UserServiceImpl implements UserService {
         }
         return Collections.emptyList();
     }
+
 
     /**
      * @param UserId

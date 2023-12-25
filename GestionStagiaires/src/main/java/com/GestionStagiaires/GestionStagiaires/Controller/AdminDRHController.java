@@ -2,14 +2,14 @@ package com.GestionStagiaires.GestionStagiaires.Controller;
 
 import com.GestionStagiaires.GestionStagiaires.Model.Stage;
 import com.GestionStagiaires.GestionStagiaires.Model.Stagiaire;
-import com.GestionStagiaires.GestionStagiaires.Service.Interfaces.AbsenceService;
-import com.GestionStagiaires.GestionStagiaires.Service.Interfaces.StageService;
-import com.GestionStagiaires.GestionStagiaires.Service.Interfaces.StagiaireService;
+import com.GestionStagiaires.GestionStagiaires.Model.User;
+import com.GestionStagiaires.GestionStagiaires.Service.Interfaces.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.List;
+
 @CrossOrigin
 @RestController
 @RequestMapping("/api/adminDrh")
@@ -18,12 +18,17 @@ public class AdminDRHController {
     private final StagiaireService stagiaireService;
     private final StageService stageService;
     private final AbsenceService absenceService;
+    private final UserService userService;
+    private final EncadrantService encadrantService;
 
     @Autowired
-    public AdminDRHController(StagiaireService stagiaireService, StageService stageService, AbsenceService absenceService) {
+    public AdminDRHController(StagiaireService stagiaireService, StageService stageService,
+                              AbsenceService absenceService, UserService userService, EncadrantService encadrantService) {
         this.stageService = stageService;
         this.stagiaireService = stagiaireService;
         this.absenceService = absenceService;
+        this.userService = userService;
+        this.encadrantService = encadrantService;
     }
 
     @GetMapping("/stagiaires")
@@ -31,6 +36,25 @@ public class AdminDRHController {
         return stagiaireService.getAllStagiaires();
     }
 
+    @GetMapping("/users/count")
+    public int getUserCount() {
+        return userService.getAllUsers().size();
+    }
+
+    @GetMapping("/stagiaires/count")
+    public int getStagiaireCount() {
+        return stagiaireService.getAllStagiaires().size();
+    }
+
+    @GetMapping("/stages/count")
+    public int getStageCount() {
+        return stageService.getAllStages().size();
+    }
+
+    @GetMapping("/encadrants/count")
+    public int getEncadrantCount() {
+        return encadrantService.getAllEncadrants().size();
+    }
 
     @GetMapping("/candidats")
     public List<Stagiaire> getAllCandidats() {

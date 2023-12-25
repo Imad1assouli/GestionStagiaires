@@ -15,7 +15,8 @@ import java.util.List;
 @Setter
 @Getter
 @AllArgsConstructor
-public class Stagiaire  {
+
+public class Stagiaire {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long stagiaireId;
@@ -44,10 +45,11 @@ public class Stagiaire  {
     private Stage stage;
 
     public Stagiaire() {
-        this.stagiaireStatus=StagiaireStatus.CANDIDAT;
+        this.stagiaireStatus = StagiaireStatus.CANDIDAT;
     }
 
-    public Stagiaire(String nom, String prenom, String cin, String etablissement, String filiere, String adresse, String email, String telephone, Date dateNaissance, String sujetDemande, Date dateDemande) {
+    public Stagiaire(String nom, String prenom, String cin, String etablissement, String filiere,
+                     String adresse, String email, String telephone, Date dateNaissance, String sujetDemande, Date dateDemande) {
         this.nom = nom;
         this.prenom = prenom;
         this.cin = cin;
@@ -60,6 +62,5 @@ public class Stagiaire  {
         this.sujetDemande = sujetDemande;
         this.dateDemande = dateDemande;
         this.stagiaireStatus=StagiaireStatus.CANDIDAT;
-
     }
 }

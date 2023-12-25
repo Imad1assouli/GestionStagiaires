@@ -5,10 +5,8 @@ import com.GestionStagiaires.GestionStagiaires.Enum.StageStatus;
 import com.GestionStagiaires.GestionStagiaires.Model.Encadrant;
 import com.GestionStagiaires.GestionStagiaires.Model.Stage;
 import com.GestionStagiaires.GestionStagiaires.Model.Stagiaire;
-import com.GestionStagiaires.GestionStagiaires.Service.Interfaces.AbsenceService;
-import com.GestionStagiaires.GestionStagiaires.Service.Interfaces.EncadrantService;
-import com.GestionStagiaires.GestionStagiaires.Service.Interfaces.StageService;
-import com.GestionStagiaires.GestionStagiaires.Service.Interfaces.StagiaireService;
+import com.GestionStagiaires.GestionStagiaires.Model.User;
+import com.GestionStagiaires.GestionStagiaires.Service.Interfaces.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
@@ -25,15 +23,47 @@ public class AdminController {
     private final StageService stageService;
     private final EncadrantService encadrantService;
     private final AbsenceService absenceService;
+    private final UserService userService;
 
     public AdminController(StagiaireService stagiaireService,
                            StageService stageService,
                            EncadrantService encadrantService,
-                           AbsenceService absenceService) {
+                           AbsenceService absenceService, UserService userService) {
         this.stagiaireService = stagiaireService;
         this.stageService = stageService;
         this.encadrantService = encadrantService;
         this.absenceService = absenceService;
+        this.userService = userService;
+    }
+
+    //Gestion Users
+    @PostMapping("/users")
+    public void saveUser(@RequestBody User user) { userService.saveUser(user); }
+
+    @PutMapping("/users/{userId}")
+    public void updateUser(@PathVariable Long userId, @RequestBody User updatedUser) {
+        userService.updateUser(userId, updatedUser);
+    }
+
+    @DeleteMapping("/users/{userId}")
+    public void deleteUser(@PathVariable Long userId) {
+        userService.deleteUser(userId);
+    }
+
+    @GetMapping("/users/username/{username}")
+    public User getUserByUsername(@PathVariable String username) {
+        return userService.getUserByUsername(username);
+    }
+
+    @GetMapping("/users")
+    public List<User> getAllUsers() { return userService.getAllUsers(); }
+
+    @GetMapping("/users/id/{userId}")
+    public User getUserById(@PathVariable Long userId) { return userService.getUserById(userId); }
+
+    @GetMapping("/users/count")
+    public int getUserCount() {
+        return userService.getAllUsers().size();
     }
 
     //gestion Stagiaires
@@ -54,6 +84,11 @@ public class AdminController {
     @GetMapping("/candidats/stage/{stageId}")
     public List<Stagiaire> getAllCandidatsStage(@PathVariable Long stageId) {
         return stagiaireService.getAllCandidatsStage(stageId);
+    }
+
+    @GetMapping("/stagiaires/count")
+    public int getStagiaireCount() {
+        return stagiaireService.getAllStagiaires().size();
     }
 
     @GetMapping("/stagiaires/stage/{stageId}")
@@ -102,6 +137,11 @@ public class AdminController {
         return stageService.getStageById(stageId);
     }
 
+    @GetMapping("/stages/count")
+    public int getStageCount() {
+        return stageService.getAllStages().size();
+    }
+
     @GetMapping("/stages/status/{status}")
     public List<Stage> getStagesByStatus(@PathVariable StageStatus status) {
         return stageService.getStagesByStatus(status);
@@ -112,6 +152,7 @@ public class AdminController {
                                               @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date endDate) {
         return stageService.getStagesByDateBetween(startDate, endDate);
     }
+
     // gestion encadrants
     @PostMapping("/encadrants")
     public void saveEncadrant(@RequestBody Encadrant encadrant) {
@@ -120,6 +161,11 @@ public class AdminController {
     @PutMapping("/encadrants/{encadrantId}")
     public void updateEncadrant(@PathVariable Long encadrantId, @RequestBody Encadrant updatedEncadrant) {
         encadrantService.updateEncadrant(encadrantId,updatedEncadrant);
+    }
+
+    @GetMapping("/encadrants/count")
+    public int getEncadrantCount() {
+        return encadrantService.getAllEncadrants().size();
     }
 
     @GetMapping("/encadrants")
@@ -159,7 +205,5 @@ public class AdminController {
     public void affecterStageAStagiaire(@RequestParam Long stageId, @RequestParam Long stagiaireId) {
         stageService.affecterStageAStagiaire(stageId, stagiaireId);
     }
-
-
 
 }

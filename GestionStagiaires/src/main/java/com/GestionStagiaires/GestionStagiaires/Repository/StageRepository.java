@@ -15,4 +15,5 @@ public interface StageRepository extends JpaRepository<Stage,Long> {
     List<Stage> findByStatus(StageStatus status);
     List<Stage> findByStartDateBetween(Date startDate, Date endDate);
     List<Stage> findByDivision(String division);
+
 }

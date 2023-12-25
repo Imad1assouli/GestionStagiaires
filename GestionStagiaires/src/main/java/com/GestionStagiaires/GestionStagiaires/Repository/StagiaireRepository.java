@@ -13,20 +13,11 @@ import java.util.List;
 public interface StagiaireRepository extends JpaRepository<Stagiaire,Long> {
     Stagiaire findByCin(String cin);
     Stagiaire findByPrenom(String prenom);
-
-
-
     List<Stagiaire> findByNom(String nom);
-    List<Stagiaire>  findByStagiaireStatus(StagiaireStatus status);
-    @Query("SELECT s FROM Stagiaire s JOIN s.stage st WHERE st.id = :stageId AND s.stagiaireStatus = :status")
+    List<Stagiaire> findByStagiaireStatus(StagiaireStatus status);
+    @Query("SELECT s FROM Stagiaire s JOIN s.stage st WHERE st.stageId = :stageId AND s.stagiaireStatus = :status")
     List<Stagiaire> findByStageIdAndStagiaireStatus(Long stageId, StagiaireStatus status);
-
-
-
     List<Stagiaire> findByFiliere(String filiere);
-
     List<Stagiaire> findByEtablissement(String etablissement);
-
-
 
 }
