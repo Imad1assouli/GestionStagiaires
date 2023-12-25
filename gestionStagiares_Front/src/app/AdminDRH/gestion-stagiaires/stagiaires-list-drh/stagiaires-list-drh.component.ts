@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 export class StagiairesListDRHComponent {
   stagiaires: Stagiaire[] = [];
 
-  constructor(private adminDrhService: AdminDrhService,router :Router) { }
+  constructor(private adminDrhService: AdminDrhService,private router :Router) { }
 
   ngOnInit(): void {
     this.getStagiaires();
