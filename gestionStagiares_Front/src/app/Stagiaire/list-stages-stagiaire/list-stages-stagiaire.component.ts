@@ -14,20 +14,23 @@ export class ListStagesStagiaireComponent {
   constructor(private stagiaireService:StagiaireService ,private router:Router) { }
 
   ngOnInit(): void {
-    this.getStagiaires();
+    this.getAllStages();
   }
 
-  getStagiaires(): void {
+  getAllStages(): void {
     this.stagiaireService.getAllStages().subscribe(
       (data: Stage[]) => {
         this.stages = data;
       },
       (error) => {
-        console.error('Error fetching stagiaires:', error);
+        console.error('Error fetching stges:', error);
       }
     );
   }  
-  
+  demandeStage(id: number) {
+    this.router.navigate(['demandeStage',id]);
+  }
+
 
 
 
