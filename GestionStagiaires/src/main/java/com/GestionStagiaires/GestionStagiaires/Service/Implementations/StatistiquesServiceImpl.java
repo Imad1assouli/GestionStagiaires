@@ -1,61 +1,46 @@
 package com.GestionStagiaires.GestionStagiaires.Service.Implementations;
 
+import com.GestionStagiaires.GestionStagiaires.Model.User;
+import com.GestionStagiaires.GestionStagiaires.Repository.EncadrantRepository;
+import com.GestionStagiaires.GestionStagiaires.Repository.StageRepository;
+import com.GestionStagiaires.GestionStagiaires.Repository.StagiaireRepository;
+import com.GestionStagiaires.GestionStagiaires.Repository.UserRepository;
 import com.GestionStagiaires.GestionStagiaires.Service.Interfaces.StatistiquesService;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
 
+@Service
+@Slf4j
 public class StatistiquesServiceImpl implements StatistiquesService {
-    /**
-     * @return
-     */
-    @Override
-    public Long getNombreStagiairesNouveaux() {
-        return null;
+    private final UserRepository userRepository;
+    private final StagiaireRepository stagiaireRepository;
+    private final StageRepository stageRepository;
+    private final EncadrantRepository encadrantRepository;
+
+    public StatistiquesServiceImpl(UserRepository userRepository, StagiaireRepository stagiaireRepository, StageRepository stageRepository, EncadrantRepository encadrantRepository) {
+        this.userRepository = userRepository;
+        this.stagiaireRepository = stagiaireRepository;
+        this.stageRepository = stageRepository;
+        this.encadrantRepository = encadrantRepository;
     }
 
-    /**
-     * @return
-     */
     @Override
-    public Long getNombreStagiairesEnCours() {
-        return null;
+    public int getNombreStagiaires() {
+        return stagiaireRepository.findAll().size();
     }
 
-    /**
-     * @return
-     */
     @Override
-    public Long getNombreStagiairesEnArchive() {
-        return null;
+    public int getNombreStages() {
+        return stageRepository.findAll().size();
     }
 
-    /**
-     * @return
-     */
     @Override
-    public Long getNombreStagesAffectes() {
-        return null;
+    public int getNombreEncadrants() {
+        return encadrantRepository.findAll().size();
     }
 
-    /**
-     * @return
-     */
     @Override
-    public Long getNombreStagesNonAffectes() {
-        return null;
-    }
-
-    /**
-     * @return
-     */
-    @Override
-    public Long getNombreEncadrantsAffectes() {
-        return null;
-    }
-
-    /**
-     * @return
-     */
-    @Override
-    public Long getNombreEncadrantsNonAffectes() {
-        return null;
+    public int getNombreUsers() {
+        return userRepository.findAll().size();
     }
 }

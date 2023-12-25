@@ -2,14 +2,8 @@ package com.GestionStagiaires.GestionStagiaires.Controller;
 
 import com.GestionStagiaires.GestionStagiaires.Enum.EncadrantType;
 import com.GestionStagiaires.GestionStagiaires.Enum.StageStatus;
-import com.GestionStagiaires.GestionStagiaires.Model.Absence;
-import com.GestionStagiaires.GestionStagiaires.Model.Encadrant;
-import com.GestionStagiaires.GestionStagiaires.Model.Stage;
-import com.GestionStagiaires.GestionStagiaires.Model.Stagiaire;
-import com.GestionStagiaires.GestionStagiaires.Service.Interfaces.AbsenceService;
-import com.GestionStagiaires.GestionStagiaires.Service.Interfaces.EncadrantService;
-import com.GestionStagiaires.GestionStagiaires.Service.Interfaces.StageService;
-import com.GestionStagiaires.GestionStagiaires.Service.Interfaces.StagiaireService;
+import com.GestionStagiaires.GestionStagiaires.Model.*;
+import com.GestionStagiaires.GestionStagiaires.Service.Interfaces.*;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
@@ -22,18 +16,24 @@ public class ChefDRHController {
     private final StageService stageService;
     private final EncadrantService encadrantService;
     private final AbsenceService absenceService;
+    private final UserService userService;
 
     public ChefDRHController(StagiaireService stagiaireService,
                              StageService stageService,
                              EncadrantService encadrantService,
-                             AbsenceService absenceService) {
+                             AbsenceService absenceService, UserService userService) {
         this.stagiaireService = stagiaireService;
         this.stageService = stageService;
         this.encadrantService = encadrantService;
         this.absenceService = absenceService;
+        this.userService = userService;
     }
 
     // gestion stage
+    @GetMapping("/stages/count")
+    public int getStageCount() {
+        return stageService.getAllStages().size();
+    }
 
     @PostMapping("/stages")
     public void saveStage(@RequestBody Stage stage) {
@@ -71,6 +71,10 @@ public class ChefDRHController {
 
 
     // gestion Stagiaires
+    @GetMapping("/stagiaires/count")
+    public int getStagiaireCount() {
+        return stagiaireService.getAllStagiaires().size();
+    }
     @GetMapping("/stagiaires")
     public List<Stagiaire> listerStagiaires() {
         return stagiaireService.getAllStagiaires();
@@ -99,6 +103,11 @@ public class ChefDRHController {
         return stagiaireService.getStagiairesByNom(nom);
     }
 
+    // gestiun users
+    @GetMapping("/users/count")
+    public int getUserCount() {
+        return userService.getAllUsers().size();
+    }
 
     // gestion encadrants
     @PostMapping("/encadrants")
@@ -109,7 +118,10 @@ public class ChefDRHController {
     public void updateEncadrant(@PathVariable Long encadrantId, @RequestBody Encadrant updatedEncadrant) {
         encadrantService.updateEncadrant(encadrantId,updatedEncadrant);
     }
-
+    @GetMapping("/encadrants/count")
+    public int getEncadrantCount() {
+        return encadrantService.getAllEncadrants().size();
+    }
     @GetMapping("/encadrants")
     public List<Encadrant> listerEncadrants() {
         return encadrantService.getAllEncadrants();

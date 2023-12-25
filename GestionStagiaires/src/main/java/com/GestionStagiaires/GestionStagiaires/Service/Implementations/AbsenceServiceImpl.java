@@ -17,10 +17,8 @@ import java.util.Optional;
 @Service
 @Slf4j
 public class AbsenceServiceImpl implements AbsenceService {
-
     private AbsenceRepository absenceRepository;
     private StagiaireRepository stagiaireRepository;
-
 
     public AbsenceServiceImpl(AbsenceRepository absenceRepository, StagiaireRepository stagiaireRepository) {
         this.absenceRepository = absenceRepository;
@@ -34,11 +32,10 @@ public class AbsenceServiceImpl implements AbsenceService {
     public void saveAbsence(Absence absence) {
         try {
             absenceRepository.save(absence);
-            log.info("Absence sauvegardée avec succés");
+            log.info("Absence sauvegardée avec succés.");
         } catch (Exception e) {
             throw new RuntimeException("Error saving absence: " + e.getMessage(), e);
         }
-
     }
 
     /**
@@ -47,15 +44,13 @@ public class AbsenceServiceImpl implements AbsenceService {
      */
     @Override
     public Absence getAbsenceById(Long absenceId) {
-
         Optional<Absence> absence = absenceRepository.findById(absenceId);
         if (absence.isPresent()) {
-            log.info("absence trouvée avec l ' ID " + absenceId);
+            log.info("absence trouvée avec l'ID " + absenceId);
             return absence.get();
         } else {
-            log.warn("Aucune absence trouvé avec l ' ID " + absenceId);
+            log.warn("Aucune absence trouvé avec l'ID " + absenceId);
         }
-
         return null;
     }
 
@@ -64,13 +59,12 @@ public class AbsenceServiceImpl implements AbsenceService {
      */
     @Override
     public List<Absence> getAllAbsences() {
-
         List<Absence> listeAbsence = absenceRepository.findAll();
         if (!listeAbsence.isEmpty()) {
-            log.info("Liste des absences trouvé avec succés ");
+            log.info("Liste des absences trouvée avec succés.");
             return listeAbsence;
         } else {
-            log.warn("Aucun absence trouvée ");
+            log.warn("Aucune absence trouvée.");
         }
         return Collections.emptyList();
     }
@@ -80,14 +74,12 @@ public class AbsenceServiceImpl implements AbsenceService {
      */
     @Override
     public void deleteAbsence(Long absenceId) {
-
         try {
             absenceRepository.deleteById(absenceId);
-            log.info("Absence supprimé avec succés");
+            log.info("Absence supprimée avec succés.");
         } catch (Exception e) {
             throw new RuntimeException("Error deleting absence: " + e.getMessage(), e);
         }
-
     }
 
     /**
@@ -100,11 +92,10 @@ public class AbsenceServiceImpl implements AbsenceService {
         if (stagiaireOptional.isPresent()) {
             Absence absence = new Absence(startDate, stagiaireOptional.get());
             absenceRepository.save(absence);
-            log.info("absence marquée avec succés");
+            log.info("Absence marquée avec succés");
         } else {
-            log.error("aucun stagiaire avec l id " + stagiaireId);
+            log.error("Aucun stagiaire avec l'ID " + stagiaireId);
         }
-
     }
 
     /**
@@ -113,7 +104,6 @@ public class AbsenceServiceImpl implements AbsenceService {
      */
     @Override
     public List<Absence> getAbsencesByStagiaire(Long stagiaireId) {
-
         Optional<Stagiaire> stagiaireOptional = stagiaireRepository.findById(stagiaireId);
         if (stagiaireOptional.isPresent()) {
             Stagiaire stagiaire = stagiaireOptional.get();
@@ -123,7 +113,6 @@ public class AbsenceServiceImpl implements AbsenceService {
         } else {
             log.warn("Aucun stagiaire trouvé avec l'ID " + stagiaireId);
         }
-
         return Collections.emptyList();
     }
 }

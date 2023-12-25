@@ -15,16 +15,4 @@ public class GestionStagiairesApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(GestionStagiairesApplication.class, args);
 	}
-	@Autowired
-	private AdminController adminController;
-	@Bean
-	public CommandLineRunner start() {
-		return args -> {
-			// Vos tests ici
-			System.out.println("Console here :"+adminController.getStagiaireById(1L).getNom());
-
-
-
-		};
-	}
 }

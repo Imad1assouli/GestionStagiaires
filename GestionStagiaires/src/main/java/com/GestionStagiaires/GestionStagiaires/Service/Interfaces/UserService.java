@@ -6,13 +6,12 @@ import com.GestionStagiaires.GestionStagiaires.Model.User;
 import java.util.List;
 
 public interface UserService  {
-     void saveUser(User user);
+    void saveUser(User user);
     User getUserById(Long UserId);
     List<User> getAllUsers();
     void deleteUser(Long UserId);
     User getUserByUsername(String username);
     void updateUser(Long UserId,User user);
-
     boolean authentificateAdmin(String username,String password);
     boolean authentificateAdminDDRH(String username,String password);
     boolean authentificateChefDRH(String username,String password);
