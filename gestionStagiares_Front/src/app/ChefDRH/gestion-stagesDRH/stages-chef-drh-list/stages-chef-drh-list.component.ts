@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Stage } from 'src/app/Model/stage';
+import { ChefDrhService } from '../../ChefDRHService/chef-drh.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -7,19 +9,28 @@ import { Stage } from 'src/app/Model/stage';
   templateUrl: './stages-chef-drh-list.component.html',
   styleUrls: ['./stages-chef-drh-list.component.css']
 })
-export class StagesChefDRHListComponent {
+export class StagesChefDRHListComponent implements OnInit {
   stages: Stage[] = [];
-  stage: Stage = new Stage();
+ 
 
-  constructor() {
-    // Initialize the default values here
-    this.stage.sujet = "nom";
-    this.stage.description = "description";
-  
-
-    // Add the stage to the stages array
-    this.stages.push(this.stage);
+  constructor(private chefDRHService:ChefDrhService,private router :Router) {
+    
+  }
+  ngOnInit(): void {
+    this.getAllstages();
   }
   
+  getAllstages(){
+    this.chefDRHService.getAllstages().subscribe(
+      (data: Stage[])=>{
+        this.stages=data;
+      },
+      (error)=>{
+        console.error('Error fetching stages');
+      }
+      );
+
+    
+  }
 
 }
