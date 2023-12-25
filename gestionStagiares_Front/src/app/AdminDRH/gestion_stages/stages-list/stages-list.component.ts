@@ -1,23 +1,28 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Stage } from 'src/app/Model/stage';
+import { AdminDrhService } from '../../AdminDRHService/admin-drh.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-stages-list',
   templateUrl: './stages-list.component.html',
   styleUrls: ['./stages-list.component.css']
 })
-export class StagesListDRHComponent {
-
+export class StagesListDRHComponent implements OnInit {
   stages: Stage[] = [];
-  stage: Stage = new Stage();
+  constructor(private adminDrhService:AdminDrhService,private router:Router) {}
 
-  constructor() {
-    // Initialize the default values here
-    this.stage.sujet = "nom";
-    this.stage.description = "description";
-
-
-    // Add the stage to the stages array
-    this.stages.push(this.stage);
+  ngOnInit(): void {
+    this.getAllStages();
+  }
+  getAllStages(){
+    this.adminDrhService.getAllStages().subscribe(
+      (data: Stage[]) => {
+        this.stages = data;
+      },
+      (error) => {
+        console.error('Error fetching stages:', error);
+      }
+    );
   }
 }

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Stage } from 'src/app/Model/stage';
+import { AdminService } from '../../AdminService/admin.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-stages-list',
@@ -8,15 +10,30 @@ import { Stage } from 'src/app/Model/stage';
 })
 export class StagesListComponent {
   stages: Stage[] = [];
-  stage: Stage = new Stage();
-
-  constructor() {
-    // Initialize the default values here
-    this.stage.sujet = "nom";
-    this.stage.description = "description";
-  
-
-    // Add the stage to the stages array
-    this.stages.push(this.stage);
+ 
+  constructor(private adminService: AdminService, private router: Router) {
+    
+    
   }
+  ngOnInit() : void {
+    this.getStages();
+
+  }
+  getStages(): void {
+    this.adminService.getAllstages().subscribe(
+      (data: Stage[]) => {
+        this.stages = data;
+      },
+      (error) => {
+        console.error('Error fetching stages:', error);
+      }
+    );
+  }
+
+
+
+}
+
+function ngOnInit() {
+  throw new Error('Function not implemented.');
 }
