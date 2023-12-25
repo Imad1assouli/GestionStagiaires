@@ -14,6 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 @Setter
 @Getter
+
 public class Encadrant {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

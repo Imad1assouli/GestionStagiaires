@@ -11,5 +11,4 @@ import java.util.List;
 public interface EncadrantRepository extends JpaRepository<Encadrant,Long> {
     List<Encadrant> findByEncadrantType(EncadrantType encadrantType);
 
-
 }

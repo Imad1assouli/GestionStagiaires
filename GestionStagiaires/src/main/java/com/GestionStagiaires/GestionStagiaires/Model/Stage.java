@@ -17,21 +17,28 @@ import java.util.List;
 @NoArgsConstructor
 @Setter
 @Getter
+
 public class Stage {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long stageId;
+
     private String sujet;
     private String description;
+
     @Temporal(TemporalType.DATE)
     private Date startDate;
+
     @Temporal(TemporalType.DATE)
     private Date endDate;
     private String division;
+
     @Enumerated(EnumType.STRING)
     private StageType type; // Enum for Affecté, Non Affecté
+
     @Enumerated(EnumType.STRING)
     private StageStatus status;
+
     @ManyToOne
     @JoinColumn(name = "encadrant_id")
     private Encadrant encadrant;
@@ -42,5 +49,4 @@ public class Stage {
 
     @OneToMany(mappedBy = "stage")
     private List<Absence> absences;
-
 }
