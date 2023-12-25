@@ -14,7 +14,7 @@ export class StagesListComponent {
     // Initialize the default values here
     this.stage.sujet = "nom";
     this.stage.description = "description";
-    this.stage.skills = "skills";
+  
 
     // Add the stage to the stages array
     this.stages.push(this.stage);

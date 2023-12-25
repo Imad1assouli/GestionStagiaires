@@ -1,4 +1,4 @@
-// admin-routing.module.ts
+// admin-drh-routing.module.ts
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AdminDRHAcceuilComponent } from './admin-drh-acceuil/admin-drh-acceuil.component';
@@ -19,7 +19,7 @@ const routes: Routes = [
     ]
   },
   // Optionally, you can add a wildcard route for 404 handling
-  // { path: '**', component: PageNotFoundComponent }
+  //{ path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({

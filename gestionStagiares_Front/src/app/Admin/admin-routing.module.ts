@@ -1,4 +1,3 @@
-// admin-routing.module.ts
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AdminAcceuilComponent } from './admin-acceuil/admin-acceuil.component';
@@ -10,26 +9,23 @@ import { StagiairesListComponent } from './Stagiaires/stagiaires-list/stagiaires
 import { AddStageAdminComponent } from './Stages/add-stage-admin/add-stage-admin.component';
 
 const routes: Routes = [
-    {
-      path: '',
-      component: AdminAcceuilComponent,
-      children: [
-        { path: 'stats', component: StatistiquesComponent },
-        { path: 'listUtlisaeurs', component: UtilisateursListComponent },
-        { path: 'ajouterUtilisateur', component: CreateUtilisateurComponent },
-        { path: 'listStages', component: StagesListComponent },
-        { path: 'listStagiaires', component: StagiairesListComponent },
-        { path: 'addStage', component: AddStageAdminComponent },
-        // Add more child routes as needed
-      ]
-    },
-  ];
-  
-  @NgModule({
-    imports: [RouterModule.forChild(routes)],
-    exports: [RouterModule]
-  })
-  export class AdminRoutingModule { }
-  
-  
+  {
+    path: '',
+    component: AdminAcceuilComponent,
+    children: [
+      { path: 'stats', component: StatistiquesComponent },
+      { path: 'listUtilisateurs', component: UtilisateursListComponent },
+      { path: 'ajouterUtilisateur', component: CreateUtilisateurComponent },
+      { path: 'listStages', component: StagesListComponent },
+      { path: 'listStagiaires', component: StagiairesListComponent },
+      { path: 'addStage', component: AddStageAdminComponent },
+      // Add more child routes as needed
+    ]
+  },
+];
 
+@NgModule({
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]
+})
+export class AdminRoutingModule { }

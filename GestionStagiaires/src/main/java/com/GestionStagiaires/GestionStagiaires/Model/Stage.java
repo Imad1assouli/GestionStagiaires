@@ -2,6 +2,7 @@ package com.GestionStagiaires.GestionStagiaires.Model;
 
 import com.GestionStagiaires.GestionStagiaires.Enum.StageStatus;
 import com.GestionStagiaires.GestionStagiaires.Enum.StageType;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -36,6 +37,7 @@ public class Stage {
     private Encadrant encadrant;
 
     @OneToMany(mappedBy = "stage")
+    @JsonIgnore
     private List<Stagiaire> stagiaires;
 
     @OneToMany(mappedBy = "stage")

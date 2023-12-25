@@ -1,4 +1,3 @@
-// admin-routing.module.ts
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AcceuilChefDRHComponent } from './acceuil-chef-drh/acceuil-chef-drh.component';
@@ -20,17 +19,13 @@ const routes: Routes = [
         { path: 'listStages', component: StagesChefDRHListComponent },
         { path: 'listStagiaires', component: StagiairesChefDrhListComponent },
         { path: 'addStage', component: AddStageChefDRHComponent },
-        
         // Add more child routes as needed
       ]
     },
-  ];
-  
-  @NgModule({
-    imports: [RouterModule.forChild(routes)],
-    exports: [RouterModule]
-  })
-  export class ChefDRHRoutingModule { }
-  
-  
+];
 
+@NgModule({
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]
+})
+export class ChefDRHRoutingModule { }

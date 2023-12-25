@@ -41,8 +41,7 @@ import { StatistiquesChefDRHComponent } from './statistiques-chef-drh/statistiqu
   ],
   imports: [
     CommonModule,
-    RouterModule, // Import the RouterModule here as well if needed
-    // Import other modules needed for the admin module
+    RouterModule, 
     BrowserModule,
     FormsModule,
     HttpClientModule,

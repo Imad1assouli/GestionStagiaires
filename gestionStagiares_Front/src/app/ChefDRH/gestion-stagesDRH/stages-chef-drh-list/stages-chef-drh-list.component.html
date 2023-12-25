@@ -1,22 +1,23 @@
 <div class="container mt-4">
-    <h3>Internship List</h3>
-  
-    <div class="card-deck">
-      <div class="card" *ngFor="let stage of stages">
-        <div class="card-body">
-          <h5 class="card-title">{{ stage.sujet }}</h5>
-          <p class="card-text">{{ stage.description }}</p>
-          <p class="card-text"><strong>Skills Demanded:</strong> {{ stage.skills }}</p>
-  
-          <!-- View Details Button -->
-          <button class="btn btn-primary" style="margin-left: 10px;">détails</button>
-  
-          <!-- Assign Internship Button -->
-          <button class="btn btn-success" style="margin-left: 10px;" >Assign Internship</button>
-          <button class="btn btn-danger" style="margin-left: 10px;" >Delete </button>
-          <button class="btn btn-primary" style="margin-left: 10px;">update</button>
-        </div>
+  <h3>Internship List</h3>
+
+  <div *ngFor="let stage of stages" class="card mb-3">
+    <div class="card-body">
+      <h5 class="card-title">{{ stage.sujet }}</h5>
+      <p class="card-text"><strong>Start Date:</strong> {{ stage.startDate | date }}</p>
+      <p class="card-text"><strong>End Date:</strong> {{ stage.endDate | date }}</p>
+      <p class="card-text"><strong>Division:</strong> {{ stage.division }}</p>
+      <p class="card-text"><strong>Type:</strong> {{ stage.type }}</p>
+      <p class="card-text"><strong>Status:</strong> {{ stage.status }}</p>
+
+        <!-- View Details Button -->
+        <button class="btn btn-primary" style="margin-left: 10px;">détails</button>
+
+        <!-- Assign Internship Button -->
+        <button class="btn btn-success" style="margin-left: 10px;" >Assign Internship</button>
+        <button class="btn btn-danger" style="margin-left: 10px;" >Delete </button>
+        <button class="btn btn-primary" style="margin-left: 10px;">update</button>
       </div>
     </div>
   </div>
-  
+

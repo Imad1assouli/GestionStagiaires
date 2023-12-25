@@ -1,6 +1,7 @@
 package com.GestionStagiaires.GestionStagiaires.Model;
 
 import com.GestionStagiaires.GestionStagiaires.Enum.StagiaireStatus;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -39,6 +40,7 @@ public class Stagiaire  {
 
     @ManyToOne()
     @JoinColumn(name = "stage_id")
+    @JsonIgnore
     private Stage stage;
 
     public Stagiaire() {

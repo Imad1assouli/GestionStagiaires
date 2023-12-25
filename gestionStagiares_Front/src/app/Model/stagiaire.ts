@@ -1,15 +1,20 @@
+import { Absence } from "./absence";
 import { Stage } from "./stage";
 
 export class Stagiaire {
-    id!: number;
+    stagiaireId!: number;
     nom!: string;
     prenom!: string;
-    username!: string;
-    stage!: Stage;
     cin!: string;
     etablissement!: string;
     filiere!: string;
     adresse!: string;
+    email!: string;
     telephone!: string;
-    dateNaissance!: Date;     
+    dateNaissance!: Date;
+    sujetDemande!: string;
+    dateDemande!: Date;
+    stagiaireStatus!: string; // Assuming 'stagiaireStatus' is a string, update it accordingly if it's an enum or specific type
+    absences!: Absence[]; // Assuming 'absences' is an array of any type, update it based on the actual structure
+    stage!: Stage;
 }

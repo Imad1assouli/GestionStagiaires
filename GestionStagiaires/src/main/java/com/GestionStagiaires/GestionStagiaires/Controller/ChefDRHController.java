@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.List;
-
+@CrossOrigin
 @RestController
-@RequestMapping("/chef-drh")
+@RequestMapping("/chefDrh")
 public class ChefDRHController {
     private final StagiaireService stagiaireService;
     private final StageService stageService;

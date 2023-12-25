@@ -5,6 +5,7 @@ import { AcceuilStagiaireComponent } from './acceuil-stagiaire/acceuil-stagiaire
 import { ListStagesStagiaireComponent } from './list-stages-stagiaire/list-stages-stagiaire.component';
 
 const routes: Routes = [
+  
   {
     path: '',
     component: AcceuilStagiaireComponent,

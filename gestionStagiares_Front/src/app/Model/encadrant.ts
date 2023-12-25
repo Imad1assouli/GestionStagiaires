@@ -1,8 +1,16 @@
+// encadrant.model.ts
+
+import { Stage } from "./stage";
+
+
 export class Encadrant {
-    id!: number;
-    nom!: string;
-    prenom!: string;
-    email!: string;
-    // Add any other relevant properties
-  }
-  
+  encadrantId!: number;
+  nom!: string;
+  prenom!: string;
+  email!: string;
+  telephone!: string;
+  encadrantType!: string;
+
+  stagesEncadres?: Stage[];
+}
+
