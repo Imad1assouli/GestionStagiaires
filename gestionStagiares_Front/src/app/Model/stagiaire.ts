@@ -14,7 +14,7 @@ export class Stagiaire {
     dateNaissance!: Date;
     sujetDemande!: string;
     dateDemande!: Date;
-
+    stagiaireStatus!:string;
     absences!: Absence[]; // Assuming 'absences' is an array of any type, update it based on the actual structure
     stage!: Stage;
 }

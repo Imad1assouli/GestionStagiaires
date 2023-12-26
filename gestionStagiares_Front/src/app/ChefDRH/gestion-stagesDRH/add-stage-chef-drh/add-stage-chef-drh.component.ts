@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Stage } from 'src/app/Model/stage';
+import { ChefDrhService } from '../../ChefDRHService/chef-drh.service';
 
 @Component({
   selector: 'app-add-stage-chef-drh',
@@ -9,28 +10,27 @@ import { Stage } from 'src/app/Model/stage';
 })
 export class AddStageChefDRHComponent implements OnInit{
   stage: Stage = new Stage();
-  constructor( private router: Router) {}
+  constructor(private chefDrhService :ChefDrhService, private router: Router) {}
   ngOnInit(): void {}
   
   onSubmit() {
-    console.log(this.stage);
-    //this.saveEmployee();
+    this.saveStage();
   }
 
-/*  saveEmployee() {
-    this.userService.createEmployee(this.user).subscribe(
+  saveStage() {
+    this.chefDrhService.createStage(this.stage).subscribe(
       (data) => {
         console.log(data);
-        this.goToEmployeeList();
+        this.goToStageList();
       },
-      (error) => {
+      (error: any) => {
         console.log("Error: ", error);
       }
     );
   }
-*/
+
   goToStageList() {
-    this.router.navigate(['/adminDRH/stagesList']);
+    this.router.navigate(['/chefDrh/listStages']);
   }
 }
 

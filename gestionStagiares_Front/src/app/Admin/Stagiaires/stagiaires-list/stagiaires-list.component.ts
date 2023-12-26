@@ -27,7 +27,22 @@ export class StagiairesListComponent implements OnInit {
       }
     );
   }
+
   markAbsence(id:number){
     this.router.navigate(['/admin/markAbsence',id]);
   }
+
+
+  deleteStagiaire(id: number): void {
+    this.adminService.deleteStagiaire(id).subscribe(
+      data => {
+        console.log(data);
+        this.getStagiaires();
+      });
+  }
+
+  updateStagiaire(stagiaireId:number){
+    this.router.navigate(['/admin/updatestagiaire',stagiaireId]);
+  }
+  
 }

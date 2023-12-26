@@ -20,4 +20,7 @@ export class ChefDrhService {
   public getAllstages():Observable<Stage[]>{
     return this.httpClient.get<Stage[]>(this.baseUrl2);
   }
+  public createStage(stage:Stage):Observable<Object>{
+    return this.httpClient.post(this.baseUrl2, stage);
+  }
 }

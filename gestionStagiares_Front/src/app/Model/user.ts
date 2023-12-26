@@ -1,8 +1,11 @@
+// user.interface.ts
 export interface User {
-    id: number;
-    username: string;
+    userId: number;
     nom: string;
-    password: string;
     prenom: string;
-    role: string;
-}
+    username: string;
+    userType: string;
+    password:string; // ou le type approprié
+    // Ajoutez d'autres propriétés au besoin
+  }
+  
