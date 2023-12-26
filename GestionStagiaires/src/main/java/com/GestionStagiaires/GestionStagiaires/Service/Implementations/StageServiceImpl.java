@@ -115,10 +115,7 @@ public class StageServiceImpl implements StageService {
 
 
 
-    /**
-     * @param stageId
-     * @param stagiaireId
-     */
+
     @Override
     public void affecterStageAStagiaire(Long stageId, Long stagiaireId) {
         Optional<Stage> stageOptional = stageRepository.findById(stageId);
@@ -139,9 +136,9 @@ public class StageServiceImpl implements StageService {
             log.info("Stagiaire avec ID " + stagiaireId + " affecté au stage avec ID " + stageId);
         } else {
             log.error("Aucun stage trouvé avec l'ID : " + stageId + " ou aucun stagiaire trouvé avec l'ID : " + stagiaireId);
+
         }
     }
-
     /**
      * @param encadrantId
      * @return

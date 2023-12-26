@@ -43,7 +43,7 @@ public class Stage {
     @JoinColumn(name = "encadrant_id")
     private Encadrant encadrant;
 
-    @OneToMany(mappedBy = "stage")
+    @OneToMany(mappedBy = "stage", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<Stagiaire> stagiaires;
 

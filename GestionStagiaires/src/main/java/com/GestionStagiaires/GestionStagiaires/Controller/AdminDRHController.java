@@ -1,5 +1,6 @@
 package com.GestionStagiaires.GestionStagiaires.Controller;
 
+import com.GestionStagiaires.GestionStagiaires.Model.Absence;
 import com.GestionStagiaires.GestionStagiaires.Model.Stage;
 import com.GestionStagiaires.GestionStagiaires.Model.Stagiaire;
 import com.GestionStagiaires.GestionStagiaires.Model.User;
@@ -94,17 +95,16 @@ public class AdminDRHController {
         return stageService.getAllStages();
     }
 
-   @PostMapping("/absence")
-    public void marquerAbsence(@RequestParam Long stagiaireId,@RequestParam Date startDate){
+    @PostMapping("/absences")
+    public void marquerAbsence(@RequestParam Long stagiaireId, @RequestBody Absence absence) {
+        absenceService.marquerAbsence(stagiaireId, absence);
+    }
 
-        absenceService.marquerAbsence(stagiaireId,startDate);
-   }
+    @GetMapping("/stages/affecter")
+    public void affecterStageAStagiaire(@RequestParam Long stageId, @RequestParam Long stagiaireId) {
+        stageService.affecterStageAStagiaire(stageId, stagiaireId);
+    }
 
-   @PostMapping ("/stages/affecter")
-     public void affecterStageAstagiaire (@RequestParam Long stageId,@RequestParam Long StagiaireId){
-        stageService.affecterStageAStagiaire(stageId,StagiaireId);
-
-   }
     @PutMapping("/stagiaires/update")
     public void updateStagiaire(@RequestParam Long stagiaireId, @RequestBody Stagiaire stagiaire) {
         stagiaireService.updateStagiaire(stagiaireId, stagiaire);

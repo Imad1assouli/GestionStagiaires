@@ -150,11 +150,11 @@ public class ChefDRHController {
 
     //  mark Absence for a Stagiaire
     @PostMapping("/absences")
-    public void marquerAbsence(@RequestParam Long stagiaireId, @RequestParam Date startDate) {
-        absenceService.marquerAbsence(stagiaireId, startDate);
+    public void marquerAbsence(@RequestParam Long stagiaireId, @RequestBody Absence absence) {
+        absenceService.marquerAbsence(stagiaireId, absence);
     }
     //affecter stage
-    @PostMapping("/stages/affecter")
+    @GetMapping("/stages/affecter")
     public void affecterStageAStagiaire(@RequestParam Long stageId, @RequestParam Long stagiaireId) {
         stageService.affecterStageAStagiaire(stageId, stagiaireId);
     }

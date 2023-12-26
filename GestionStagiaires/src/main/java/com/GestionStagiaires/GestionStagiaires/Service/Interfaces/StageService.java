@@ -3,6 +3,7 @@ package com.GestionStagiaires.GestionStagiaires.Service.Interfaces;
 import com.GestionStagiaires.GestionStagiaires.Enum.StageStatus;
 import com.GestionStagiaires.GestionStagiaires.Enum.StageType;
 import com.GestionStagiaires.GestionStagiaires.Model.Stage;
+import com.GestionStagiaires.GestionStagiaires.Model.Stagiaire;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;

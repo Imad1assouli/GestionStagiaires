@@ -2,10 +2,7 @@ package com.GestionStagiaires.GestionStagiaires.Controller;
 
 import com.GestionStagiaires.GestionStagiaires.Enum.EncadrantType;
 import com.GestionStagiaires.GestionStagiaires.Enum.StageStatus;
-import com.GestionStagiaires.GestionStagiaires.Model.Encadrant;
-import com.GestionStagiaires.GestionStagiaires.Model.Stage;
-import com.GestionStagiaires.GestionStagiaires.Model.Stagiaire;
-import com.GestionStagiaires.GestionStagiaires.Model.User;
+import com.GestionStagiaires.GestionStagiaires.Model.*;
 import com.GestionStagiaires.GestionStagiaires.Service.Interfaces.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -196,12 +193,12 @@ public class AdminController {
 
     //  mark Absence for a Stagiaire
     @PostMapping("/absences")
-    public void marquerAbsence(@RequestParam Long stagiaireId, @RequestParam Date startDate) {
-        absenceService.marquerAbsence(stagiaireId, startDate);
+    public void marquerAbsence(@RequestParam Long stagiaireId, @RequestBody Absence absence) {
+        absenceService.marquerAbsence(stagiaireId, absence);
     }
 
     //affecter stage
-    @PostMapping("/stages/affecter")
+    @GetMapping("/stages/affecter")
     public void affecterStageAStagiaire(@RequestParam Long stageId, @RequestParam Long stagiaireId) {
         stageService.affecterStageAStagiaire(stageId, stagiaireId);
     }

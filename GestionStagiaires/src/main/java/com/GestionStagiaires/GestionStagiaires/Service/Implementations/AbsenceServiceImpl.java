@@ -87,10 +87,9 @@ public class AbsenceServiceImpl implements AbsenceService {
      * @param startDate
      */
     @Override
-    public void marquerAbsence(Long stagiaireId, Date startDate) {
+    public void marquerAbsence(Long stagiaireId, Absence absence) {
         Optional<Stagiaire> stagiaireOptional = stagiaireRepository.findById(stagiaireId);
         if (stagiaireOptional.isPresent()) {
-            Absence absence = new Absence(startDate, stagiaireOptional.get());
             absenceRepository.save(absence);
             log.info("Absence marquée avec succés");
         } else {

@@ -7,7 +7,7 @@ import com.GestionStagiaires.GestionStagiaires.Service.Interfaces.StagiaireServi
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@CrossOrigin
 @RestController
 @RequestMapping("/api/stagiaire")
 public class StagiaireController {

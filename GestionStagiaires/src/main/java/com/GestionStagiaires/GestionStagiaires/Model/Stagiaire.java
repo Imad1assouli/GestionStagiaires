@@ -29,6 +29,7 @@ public class Stagiaire {
     private String adresse;
     private String email;
     private String telephone;
+
     private Date dateNaissance;
     private String sujetDemande;
     private Date dateDemande;
@@ -36,7 +37,7 @@ public class Stagiaire {
     @Enumerated(EnumType.STRING)
     private StagiaireStatus stagiaireStatus;
 
-    @OneToMany(mappedBy = "stagiaire", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "stagiaire", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Absence> absences;
 
     @ManyToOne()
