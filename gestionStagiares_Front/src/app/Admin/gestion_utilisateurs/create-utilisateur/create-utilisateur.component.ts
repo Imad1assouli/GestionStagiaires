@@ -1,6 +1,7 @@
 import { Component,OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/app/Model/user';
+import { AdminService } from '../../AdminService/admin.service';
 
 @Component({
   selector: 'app-create-utilisateur',
@@ -8,34 +9,34 @@ import { User } from 'src/app/Model/user';
   styleUrls: ['./create-utilisateur.component.css']
 })
 export class CreateUtilisateurComponent implements OnInit {
-  user!: User;
+  user: User = {
+    nom: '', prenom: '', username: '', password: '', userType: '',
+    userId: 0
+  };
 
-  constructor( private router: Router) {}
+  constructor(private adminService:AdminService, private router: Router) {}
 
   ngOnInit(): void {}
   
   onSubmit() {
-    console.log(this.user);
-    //this.saveEmployee();
-
+    this.saveUser();
   }
 
-/*  saveEmployee() {
-    this.userService.createEmployee(this.user).subscribe(
+  saveUser() {
+    this.adminService.createUser(this.user).subscribe(
       (data) => {
         console.log(data);
-        this.goToEmployeeList();
+        this.goToUsersList();
       },
-      (error) => {
+      (error: any) => {
         console.log("Error: ", error);
       }
     );
   }
-*/
-  goToEmployeeList() {
-    this.router.navigate(['/listUtlisaeurs']);
-  }
 
+  goToUsersList() {
+    this.router.navigate(['/admin/listUtlisaeurs']);
+  }
   
 }
 

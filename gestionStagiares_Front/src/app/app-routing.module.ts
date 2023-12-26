@@ -21,6 +21,8 @@ import { StagiairesChefDrhListComponent } from './ChefDRH/gestion-stagiaires/sta
 import { AddStageChefDRHComponent } from './ChefDRH/gestion-stagesDRH/add-stage-chef-drh/add-stage-chef-drh.component';
 import { AcceuilChefDRHComponent } from './ChefDRH/acceuil-chef-drh/acceuil-chef-drh.component';
 import { DemandeStageComponent } from './Stagiaire/demande-stage/demande-stage.component';
+import { UpdateUtilisateurComponent } from './Admin/gestion_utilisateurs/update-utilisateur/update-utilisateur.component';
+import { UpadteStagiaireComponent } from './Admin/Stagiaires/upadte-stagiaire/upadte-stagiaire.component';
 
 
 const routes: Routes = [
@@ -32,6 +34,8 @@ const routes: Routes = [
     { path: 'listStages', component: StagesListComponent },
     { path: 'listStagiaires', component: StagiairesListComponent },
     { path: 'addStage', component: AddStageAdminComponent },
+    {path:'updateuser/:userId',component:UpdateUtilisateurComponent},
+    {path:'updatestagiaire/:stagiaireId',component:UpadteStagiaireComponent},
     // Add more child routes as needed
   ]},
   { path: 'stagiaire', component: AcceuilStagiaireComponent, children: [

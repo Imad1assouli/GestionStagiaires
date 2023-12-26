@@ -16,8 +16,8 @@
             <td>{{ stagiaire.email }}</td>
             <td>{{ stagiaire.sujetDemande }}</td> <!-- Assuming stage is a property in your Stagiaire model -->
             <td>
-                <button class="btn btn-info">Update</button>
-                <button *ngIf="stagiaire.stagiaireId !== undefined" class="btn btn-danger" style="margin-left: 10px;">Delete</button>
+                <button class="btn btn-info" (click)="updateStagiaire(stagiaire.stagiaireId)">Update</button>
+                <button *ngIf="stagiaire.stagiaireId !== undefined" class="btn btn-danger" style="margin-left: 10px;" (click)="deleteStagiaire(stagiaire.stagiaireId)"  >Delete</button>
                 <button *ngIf="stagiaire.stagiaireId !== undefined" class="btn btn-info" style="margin-left: 10px;">View</button>
                 <button *ngIf="stagiaire.stagiaireId !== undefined" class="btn btn-danger" style="margin-left: 10px;">Absence</button>
             </td>
