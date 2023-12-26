@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Date;
 import java.util.List;
 
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api/admin")
 public class AdminController {
@@ -58,7 +58,7 @@ public class AdminController {
     @GetMapping("/users")
     public List<User> getAllUsers() { return userService.getAllUsers(); }
 
-    @GetMapping("/users/id/{userId}")
+    @GetMapping("/users/{userId}")
     public User getUserById(@PathVariable Long userId) { return userService.getUserById(userId); }
 
     @GetMapping("/users/count")

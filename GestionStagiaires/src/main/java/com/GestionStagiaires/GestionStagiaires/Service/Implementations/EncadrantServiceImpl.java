@@ -29,6 +29,8 @@ public class EncadrantServiceImpl implements EncadrantService {
         try {
             Encadrant savedEncadrant = encadrantRepository.save(encadrant);
             log.info("Encadrant sauvegardé avec succès : " + savedEncadrant.getEncadrantId());
+
+
         } catch (DataAccessException e) {
             log.error("Erreur lors de la sauvegarde de l'encadrant : " + e.getMessage(), e);
             throw new RuntimeException("Erreur lors de la sauvegarde de l'encadrant : " + e.getMessage(), e);
@@ -44,8 +46,10 @@ public class EncadrantServiceImpl implements EncadrantService {
             existingEncadrant.setTelephone(updatedEncadrant.getTelephone());
             existingEncadrant.setEncadrantType(updatedEncadrant.getEncadrantType());
             encadrantRepository.save(existingEncadrant);
+
         } else {
             log.error("Encadrant introuvable.");
+
         }
     }
 
@@ -90,8 +94,10 @@ public class EncadrantServiceImpl implements EncadrantService {
         if (encadrantOptional.isPresent()) {
             encadrantRepository.deleteById(encadrantId);
             log.info("Encadrant supprimé avec succès.");
+
         } else {
             log.error("Aucun encadrant trouvé avec l'ID : " + encadrantId);
+
         }
 
     }

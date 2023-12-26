@@ -31,6 +31,7 @@ public class StageServiceImpl implements StageService {
         try {
             stageRepository.save(stage);
             log.info("Stage creé avec succés");
+
         } catch (Exception e) {
             throw new RuntimeException("Error saving stage: " + e.getMessage(), e);
         }
@@ -49,8 +50,10 @@ public class StageServiceImpl implements StageService {
             existingStage.setDivision(updatedStage.getDivision());
             existingStage.setSujet(updatedStage.getSujet());
             stageRepository.save(existingStage);
+
         } else {
             log.error("Stage introuvable.");
+
         }
     }
 
@@ -99,8 +102,10 @@ public class StageServiceImpl implements StageService {
             if (stageOptional.isPresent()) {
                 stageRepository.deleteById(stageId);
                 log.info("Stage supprimé avec succès");
+
             } else {
                 log.warn("Aucun stage trouvé avec l'ID : " + stageId);
+
             }
         } catch (Exception e) {
             log.error("Erreur lors de la suppression du stage avec l'ID : " + stageId, e);

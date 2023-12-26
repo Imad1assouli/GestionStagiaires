@@ -10,7 +10,7 @@ import java.util.Date;
 import java.util.List;
 @CrossOrigin
 @RestController
-@RequestMapping("/chefDrh")
+@RequestMapping("/api/chefDrh")
 public class ChefDRHController {
     private final StagiaireService stagiaireService;
     private final StageService stageService;
