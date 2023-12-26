@@ -96,8 +96,8 @@ public class AdminController {
         return stagiaireService.getAllStagiairesStage(stageId);
     }
 
-    @PutMapping("/stagiaires/update")
-    public void updateStagiaire(@RequestParam Long stagiaireId,@RequestBody Stagiaire stagiaire){
+    @PutMapping("/stagiaires/{stagiaireId}")
+    public void updateStagiaire(@PathVariable Long stagiaireId,@RequestBody Stagiaire stagiaire){
         stagiaireService.updateStagiaire(stagiaireId,stagiaire);
     }
 
