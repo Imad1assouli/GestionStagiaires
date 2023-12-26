@@ -17,6 +17,7 @@ import { ViewStagiaireComponent } from './Stagiaires/view-stagiaire/view-stagiai
 import { ViewUtilisateurComponent } from './gestion_utilisateurs/view-utilisateur/view-utilisateur.component';
 import { UpdateStageAdminComponent } from './Stages/update-stage-admin/update-stage-admin.component';
 import { AddStageAdminComponent } from './Stages/add-stage-admin/add-stage-admin.component';
+import { AffecterStageComponent } from './Stages/affecter-stage/affecter-stage.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { AddStageAdminComponent } from './Stages/add-stage-admin/add-stage-admin
     ViewUtilisateurComponent,
     UpdateStageAdminComponent,
     AddStageAdminComponent,
+    AffecterStageComponent,
     // Include other components here
   ],
   imports: [

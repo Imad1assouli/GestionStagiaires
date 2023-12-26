@@ -29,11 +29,20 @@ export class StagesListComponent {
       }
     );
   }
+  updateStage(id:number){
+    this.router.navigate(['/admin/updateStage', id]);
+  }
+  deleteStage(id: number): void {
+    this.adminService.deleteStage(id).subscribe(() => {
+      // Reload the list after successful deletion
+      this.getStages();
+    });
+  }
+  affecterStage(id: number) {
+    this.router.navigate(['/admin/affecterStage', id]);
+  }
 
 
 
 }
 
-function ngOnInit() {
-  throw new Error('Function not implemented.');
-}

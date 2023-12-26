@@ -1,0 +1,27 @@
+<h3>Liste des Candidats</h3>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Prenom</th>
+            <th>Email</th>
+            <th>Stage</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let stagiaire of stagiaires">
+            <td>{{ stagiaire.nom }}</td>
+            <td>{{ stagiaire.prenom }}</td>
+            <td>{{ stagiaire.email }}</td>
+            <td>{{ stagiaire.sujetDemande }}</td> 
+            <td>
+                <button class="btn btn-info">details</button>
+                <button *ngIf="stagiaire.stagiaireId !== undefined" class="btn btn-success" style="margin-left: 10px;" (click)="affecterStage(stagiaire.stagiaireId)">Affecter</button>
+
+
+                
+            </td>
+        </tr>
+    </tbody>
+</table>

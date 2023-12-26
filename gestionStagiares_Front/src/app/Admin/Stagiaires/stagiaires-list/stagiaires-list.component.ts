@@ -27,4 +27,7 @@ export class StagiairesListComponent implements OnInit {
       }
     );
   }
+  markAbsence(id:number){
+    this.router.navigate(['/admin/markAbsence',id]);
+  }
 }

@@ -8,9 +8,9 @@ import { Stagiaire } from 'src/app/Model/stagiaire';
   providedIn: 'root'
 })
 export class StagiaireService {
-  private baseUrl2 = "http://localhost:8095/api/stagiaire/stages";
-  private baseUrl = "http://localhost:8095/api/admin/stages";
-  private baseUrl1 = "http://localhost:8095/api/stagiaire/stages/demande";
+  private baseUrl2 = "http://localhost:8080/api/stagiaire/stages";
+  private baseUrl = "http://localhost:8080/api/admin/stages";
+  private baseUrl1 = "http://localhost:8080/api/stagiaire/stages/demande";
  
   
 

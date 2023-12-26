@@ -7,6 +7,10 @@ import { CreateUtilisateurComponent } from './gestion_utilisateurs/create-utilis
 import { StagesListComponent } from './Stages/stages-list/stages-list.component';
 import { StagiairesListComponent } from './Stagiaires/stagiaires-list/stagiaires-list.component';
 import { AddStageAdminComponent } from './Stages/add-stage-admin/add-stage-admin.component';
+import { UpadteStagiaireComponent } from './Stagiaires/upadte-stagiaire/upadte-stagiaire.component';
+import { UpdateStageAdminComponent } from './Stages/update-stage-admin/update-stage-admin.component';
+import { AffecterStageComponent } from './Stages/affecter-stage/affecter-stage.component';
+import { AbsenceComponent } from './Stagiaires/absence/absence.component';
 
 const routes: Routes = [
   {
@@ -19,6 +23,10 @@ const routes: Routes = [
       { path: 'listStages', component: StagesListComponent },
       { path: 'listStagiaires', component: StagiairesListComponent },
       { path: 'addStage', component: AddStageAdminComponent },
+      { path: 'updateStage/:id', component: UpdateStageAdminComponent },
+      { path: 'affecterStage/:id', component:AffecterStageComponent  },
+      { path: 'markAbsence/:id', component:AbsenceComponent  },
+      
       // Add more child routes as needed
     ]
   },

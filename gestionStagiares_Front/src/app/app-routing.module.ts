@@ -21,6 +21,10 @@ import { StagiairesChefDrhListComponent } from './ChefDRH/gestion-stagiaires/sta
 import { AddStageChefDRHComponent } from './ChefDRH/gestion-stagesDRH/add-stage-chef-drh/add-stage-chef-drh.component';
 import { AcceuilChefDRHComponent } from './ChefDRH/acceuil-chef-drh/acceuil-chef-drh.component';
 import { DemandeStageComponent } from './Stagiaire/demande-stage/demande-stage.component';
+import { UpadteStagiaireComponent } from './Admin/Stagiaires/upadte-stagiaire/upadte-stagiaire.component';
+import { UpdateStageAdminComponent } from './Admin/Stages/update-stage-admin/update-stage-admin.component';
+import { AffecterStageComponent } from './Admin/Stages/affecter-stage/affecter-stage.component';
+import { AbsenceComponent } from './Admin/Stagiaires/absence/absence.component';
 
 
 const routes: Routes = [
@@ -32,7 +36,10 @@ const routes: Routes = [
     { path: 'listStages', component: StagesListComponent },
     { path: 'listStagiaires', component: StagiairesListComponent },
     { path: 'addStage', component: AddStageAdminComponent },
-    // Add more child routes as needed
+    { path: 'updateStage/:id', component: UpdateStageAdminComponent },
+    { path: 'affecterStage/:id', component:AffecterStageComponent  },
+    { path: 'markAbsence/:id', component:AbsenceComponent  },
+  
   ]},
   { path: 'stagiaire', component: AcceuilStagiaireComponent, children: [
     { path: '', redirectTo: 'listStagesStagiaire', pathMatch: 'full' }, // Add a default child route

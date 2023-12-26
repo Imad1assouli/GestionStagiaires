@@ -8,8 +8,8 @@ import { Stagiaire } from 'src/app/Model/stagiaire';
   providedIn: 'root'
 })
 export class ChefDrhService {
-  private baseUrl = "http://localhost:8095/api/chefDrh/stagiaires";
-  private baseUrl2 = "http://localhost:8095/api/chefDrh/stages";
+  private baseUrl = "http://localhost:8080/api/chefDrh/stagiaires";
+  private baseUrl2 = "http://localhost:8080/api/chefDrh/stages";
 
   constructor(private httpClient: HttpClient) { }
 
