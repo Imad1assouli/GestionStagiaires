@@ -15,6 +15,7 @@ export class AdminService {
   }
   private baseUrl = "http://localhost:8080/api/admin/stagiaires";
   private baseUrl2 = "http://localhost:8080/api/admin/stages";
+  private baseUr9 = "http://localhost:8080/api/admin/statistics";
 
   private baseUrl3 = "http://localhost:8080/api/admin/candidats";
   private baseUrl4 = "http://localhost:8080/api/admin/stages/affecter";
@@ -35,6 +36,9 @@ export class AdminService {
   }
   public getCandidats(): Observable<Stagiaire[]> {
     return this.httpClient.get<Stagiaire[]>(this.baseUrl3);
+  }
+  getStatistics(): Observable<any> {
+    return this.httpClient.get<any>(`${this.baseUr9}`);
   }
   
   

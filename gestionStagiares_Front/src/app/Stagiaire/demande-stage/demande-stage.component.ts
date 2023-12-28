@@ -23,7 +23,6 @@ export class DemandeStageComponent implements OnInit {
   }
 
   onSubmit() {
-      this.stagiaire.sujetDemande = this.stage.sujet;
       this.demandeStage();
       
   }

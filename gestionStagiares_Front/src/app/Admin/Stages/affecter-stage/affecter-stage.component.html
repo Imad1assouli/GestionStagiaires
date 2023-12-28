@@ -14,7 +14,7 @@
             <td>{{ stagiaire.nom }}</td>
             <td>{{ stagiaire.prenom }}</td>
             <td>{{ stagiaire.email }}</td>
-            <td>{{ stagiaire.sujetDemande }}</td> 
+            <td>{{ stagiaire.stage.sujet }}</td> 
             <td>
                 <button class="btn btn-info">details</button>
                 <button *ngIf="stagiaire.stagiaireId !== undefined" class="btn btn-success" style="margin-left: 10px;" (click)="affecterStage(stagiaire.stagiaireId)">Affecter</button>
