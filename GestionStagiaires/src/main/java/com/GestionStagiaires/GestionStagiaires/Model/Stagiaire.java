@@ -29,7 +29,7 @@ public class Stagiaire {
     private String adresse;
     private String email;
     private String telephone;
-
+    private String sujetDemande;
     private Date dateNaissance;
     private Date dateDemande;
 
