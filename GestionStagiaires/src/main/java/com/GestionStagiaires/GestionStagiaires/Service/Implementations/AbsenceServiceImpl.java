@@ -90,6 +90,8 @@ public class AbsenceServiceImpl implements AbsenceService {
     public void marquerAbsence(Long stagiaireId, Absence absence) {
         Optional<Stagiaire> stagiaireOptional = stagiaireRepository.findById(stagiaireId);
         if (stagiaireOptional.isPresent()) {
+            absence.setStagiaire(stagiaireOptional.get());
+            absence.setStage(stagiaireOptional.get().getStage());
             absenceRepository.save(absence);
             log.info("Absence marquée avec succés");
         } else {

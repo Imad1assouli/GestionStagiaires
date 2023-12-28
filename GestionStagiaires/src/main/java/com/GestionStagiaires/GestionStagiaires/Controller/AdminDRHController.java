@@ -6,10 +6,14 @@ import com.GestionStagiaires.GestionStagiaires.Model.Stagiaire;
 import com.GestionStagiaires.GestionStagiaires.Model.User;
 import com.GestionStagiaires.GestionStagiaires.Service.Interfaces.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @CrossOrigin
 @RestController
@@ -93,6 +97,20 @@ public class AdminDRHController {
     @GetMapping ("/stages")
     public List<Stage> getAllStages(){
         return stageService.getAllStages();
+    }
+    @DeleteMapping("/stages/{id}")
+    public void deleteStage(@PathVariable Long id) {
+        stageService.deleteStage(id);
+    }
+    @GetMapping("/statistics")
+    public ResponseEntity<Map<String, Integer>> getStatistics() {
+        Map<String, Integer> statistics = new HashMap<>();
+        statistics.put("numberOfEncadrants", encadrantService.getAllEncadrants().size());
+        statistics.put("numberOfStagiaires", stagiaireService.getAllStagiaires().size());
+        statistics.put("numberOfStages", stageService.getAllStages().size());
+        statistics.put("numberOfAdminDrh",userService.getAllAdminDrh().size() );
+        statistics.put("numberOfChefDrh", userService.getAllChefDrh().size());
+        return new ResponseEntity<>(statistics, HttpStatus.OK);
     }
 
     @PostMapping("/absences")

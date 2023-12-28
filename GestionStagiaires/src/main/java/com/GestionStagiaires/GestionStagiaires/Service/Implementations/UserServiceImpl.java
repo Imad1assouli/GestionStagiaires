@@ -65,6 +65,31 @@ public class UserServiceImpl implements UserService {
         }
         return Collections.emptyList();
     }
+    @Override
+    public List<User> getAllAdminDrh() {
+        List<User> listeUsers =userRepository.findByUserType(UserType.AdminDRH);
+        if (!listeUsers.isEmpty()){
+            log.info("Liste des users trouvé avec succés ");
+            return listeUsers;
+        }
+        else {
+            log.warn("Aucun user trouvé ");
+        }
+        return Collections.emptyList();
+    }
+    @Override
+    public List<User> getAllChefDrh() {
+        List<User> listeUsers =userRepository.findByUserType(UserType.ChefDRH);
+        if (!listeUsers.isEmpty()){
+            log.info("Liste des users trouvé avec succés ");
+            return listeUsers;
+        }
+        else {
+            log.warn("Aucun user trouvé ");
+        }
+        return Collections.emptyList();
+    }
+
 
 
     /**
@@ -116,15 +141,19 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean authentificateAdmin(String username, String password) {
-
         Optional<User> storedUser = userRepository.findByUsername(username);
 
-        if (storedUser.isPresent() && storedUser.get().getPassword().equals(password) && "ADMIN".equals(storedUser.get().getUserType())) {
-            return true;
-        } else {
-            return false;
+        if (storedUser.isPresent()) {
+
+            if (storedUser.get().getPassword().equals(password) &&  UserType.Admin.equals(storedUser.get().getUserType())) {
+                return true;
+            }
         }
+
+        return false;
     }
+
+
 
 
 
@@ -132,21 +161,27 @@ public class UserServiceImpl implements UserService {
     public boolean authentificateAdminDDRH(String username, String password) {
         Optional<User> storedUser = userRepository.findByUsername(username);
 
-        if (storedUser.isPresent() && storedUser.get().getPassword().equals(password) && "AdminDRH".equals(storedUser.get().getUserType())) {
-            return true;
-        } else {
-            return false;
+        if (storedUser.isPresent()) {
+
+            if (storedUser.get().getPassword().equals(password) &&  UserType.AdminDRH.equals(storedUser.get().getUserType())) {
+                return true;
+            }
         }
+
+        return false;
     }
 
     @Override
     public boolean authentificateChefDRH(String username, String password) {
         Optional<User> storedUser = userRepository.findByUsername(username);
 
-        if (storedUser.isPresent() && storedUser.get().getPassword().equals(password) && "ChefDRH".equals(storedUser.get().getUserType())) {
-            return true;
-        } else {
-            return false;
+        if (storedUser.isPresent()) {
+
+            if (storedUser.get().getPassword().equals(password) &&  UserType.ChefDRH.equals(storedUser.get().getUserType())) {
+                return true;
+            }
         }
+
+        return false;
     }
 }

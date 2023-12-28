@@ -31,13 +31,13 @@ public class Stagiaire {
     private String telephone;
 
     private Date dateNaissance;
-    private String sujetDemande;
     private Date dateDemande;
 
     @Enumerated(EnumType.STRING)
     private StagiaireStatus stagiaireStatus;
 
     @OneToMany(mappedBy = "stagiaire", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
     private List<Absence> absences;
 
     @ManyToOne()
@@ -50,7 +50,7 @@ public class Stagiaire {
     }
 
     public Stagiaire(String nom, String prenom, String cin, String etablissement, String filiere,
-                     String adresse, String email, String telephone, Date dateNaissance, String sujetDemande, Date dateDemande) {
+                     String adresse, String email, String telephone, Date dateNaissance, Date dateDemande) {
         this.nom = nom;
         this.prenom = prenom;
         this.cin = cin;
@@ -60,7 +60,7 @@ public class Stagiaire {
         this.email = email;
         this.telephone = telephone;
         this.dateNaissance = dateNaissance;
-        this.sujetDemande = sujetDemande;
+
         this.dateDemande = dateDemande;
         this.stagiaireStatus=StagiaireStatus.CANDIDAT;
     }

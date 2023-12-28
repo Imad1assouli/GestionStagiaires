@@ -6,10 +6,14 @@ import com.GestionStagiaires.GestionStagiaires.Model.*;
 import com.GestionStagiaires.GestionStagiaires.Service.Interfaces.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
@@ -62,6 +66,16 @@ public class AdminController {
     public int getUserCount() {
         return userService.getAllUsers().size();
     }
+    @GetMapping("/statistics")
+    public ResponseEntity<Map<String, Integer>> getStatistics() {
+        Map<String, Integer> statistics = new HashMap<>();
+        statistics.put("numberOfEncadrants", encadrantService.getAllEncadrants().size());
+        statistics.put("numberOfStagiaires", stagiaireService.getAllStagiaires().size());
+        statistics.put("numberOfStages", stageService.getAllStages().size());
+        statistics.put("numberOfAdminDrh",userService.getAllAdminDrh().size() );
+        statistics.put("numberOfChefDrh", userService.getAllChefDrh().size());
+        return new ResponseEntity<>(statistics, HttpStatus.OK);
+    }
 
     //gestion Stagiaires
     @GetMapping("/stagiaires")
@@ -106,6 +120,10 @@ public class AdminController {
     @DeleteMapping("/stagiaires/{id}")
     public void deleteStagiaire(@PathVariable Long id) {
         stagiaireService.deleteStagiaire(id);
+    }
+    @DeleteMapping("/stages/{id}")
+    public void deleteStage(@PathVariable Long id) {
+        stageService.deleteStage(id);
     }
 
     @GetMapping("/stagiaires/nom/{nom}")

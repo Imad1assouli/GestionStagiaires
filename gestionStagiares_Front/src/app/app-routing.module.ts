@@ -27,11 +27,17 @@ import { UpdateStageAdminComponent } from './Admin/Stages/update-stage-admin/upd
 import { AffecterStageComponent } from './Admin/Stages/affecter-stage/affecter-stage.component';
 import { AbsenceComponent } from './Admin/Stagiaires/absence/absence.component';
 import { UpdateUtilisateurComponent } from './Admin/gestion_utilisateurs/update-utilisateur/update-utilisateur.component';
+import { LoginComponent } from './Login/login/login.component';
+import { ViewStagiaireAdminDrhComponent } from './AdminDRH/gestion-stagiaires/view-stagiaire-admin-drh/view-stagiaire-admin-drh.component';
+import { ViewStagiaireComponent } from './Admin/Stagiaires/view-stagiaire/view-stagiaire.component';
+import { ViewStagiaireChefDRHComponent } from './ChefDRH/gestion-stagiaires/view-stagiaire-chef-drh/view-stagiaire-chef-drh.component';
+
 
 
 
 
 const routes: Routes = [
+  { path: 'login', component: LoginComponent },
   { path: 'admin', component: AdminAcceuilComponent, children: [
     { path: '', redirectTo: 'stats', pathMatch: 'full' }, // Add a default child route
     { path: 'stats', component: StatistiquesComponent },
@@ -45,6 +51,7 @@ const routes: Routes = [
     { path: 'markAbsence/:id', component:AbsenceComponent  },
     {path:'updateuser/:userId',component:UpdateUtilisateurComponent},
     {path:'updatestagiaire/:stagiaireId',component:UpadteStagiaireComponent},
+    {path:'ViewStagiaire/:id',component:ViewStagiaireComponent},
     // Add more child routes as needed
 
   ]},
@@ -61,6 +68,7 @@ const routes: Routes = [
     { path: '', redirectTo: 'statsDRH', pathMatch: 'full' }, // Add a default child route
     { path: 'stagesList', component: StagesListDRHComponent },
     { path: 'stagiairesList', component: StagiairesListDRHComponent },
+    {path:'ViewStagiaire/:id',component:ViewStagiaireAdminDrhComponent},
 ]},
 { path: 'chefDrh', component: AcceuilChefDRHComponent, children: [
    { path: 'stats', component: StatistiquesChefDRHComponent },
@@ -70,6 +78,7 @@ const routes: Routes = [
    { path: 'listStages', component: StagesChefDRHListComponent },
    { path: 'listStagiaires', component: StagiairesChefDrhListComponent },
    { path: 'addStage', component: AddStageChefDRHComponent },
+   {path:'ViewStagiaire/:id',component:ViewStagiaireChefDRHComponent},
 ]},
 
 

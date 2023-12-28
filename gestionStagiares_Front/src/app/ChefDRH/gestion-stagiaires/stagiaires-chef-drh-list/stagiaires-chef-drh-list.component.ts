@@ -27,5 +27,8 @@ export class StagiairesChefDrhListComponent {
       }
     );
   }
+  getStagiaireDetails(id:number){
+    this.router.navigate(['/chefDrh/ViewStagiaire',id]);
+  }
 
 }

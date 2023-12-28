@@ -2,6 +2,7 @@
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
 import { AdminModule } from './Admin/Admin.module';
 
 
@@ -26,6 +27,8 @@ import { ChefDRHModule } from './ChefDRH/ChefDRH.module';
 
 
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +42,9 @@ import { ChefDRHModule } from './ChefDRH/ChefDRH.module';
     AdminDRHModule,
     HttpClientModule,
     ChefDRHModule,
-    AppRoutingModule, // Keep this as the last import
+    AppRoutingModule,
+     // Keep this as the last import
+  
   ],
   providers: [],
   bootstrap: [AppComponent]

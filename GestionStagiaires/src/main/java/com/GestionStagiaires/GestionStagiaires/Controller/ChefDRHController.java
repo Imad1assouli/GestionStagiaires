@@ -4,10 +4,15 @@ import com.GestionStagiaires.GestionStagiaires.Enum.EncadrantType;
 import com.GestionStagiaires.GestionStagiaires.Enum.StageStatus;
 import com.GestionStagiaires.GestionStagiaires.Model.*;
 import com.GestionStagiaires.GestionStagiaires.Service.Interfaces.*;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 @CrossOrigin
 @RestController
 @RequestMapping("/api/chefDrh")
@@ -157,6 +162,20 @@ public class ChefDRHController {
     @GetMapping("/stages/affecter")
     public void affecterStageAStagiaire(@RequestParam Long stageId, @RequestParam Long stagiaireId) {
         stageService.affecterStageAStagiaire(stageId, stagiaireId);
+    }
+    @DeleteMapping("/stages/{id}")
+    public void deleteStage(@PathVariable Long id) {
+        stageService.deleteStage(id);
+    }
+    @GetMapping("/statistics")
+    public ResponseEntity<Map<String, Integer>> getStatistics() {
+        Map<String, Integer> statistics = new HashMap<>();
+        statistics.put("numberOfEncadrants", encadrantService.getAllEncadrants().size());
+        statistics.put("numberOfStagiaires", stagiaireService.getAllStagiaires().size());
+        statistics.put("numberOfStages", stageService.getAllStages().size());
+        statistics.put("numberOfAdminDrh",userService.getAllAdminDrh().size() );
+        statistics.put("numberOfChefDrh", userService.getAllChefDrh().size());
+        return new ResponseEntity<>(statistics, HttpStatus.OK);
     }
 
 

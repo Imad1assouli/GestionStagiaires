@@ -24,19 +24,22 @@ export class AbsenceComponent implements OnInit{
    
   }
   onSubmit(dateAbsence:Date) {
+    
     this.absence= new Absence(dateAbsence, this.stagiaire);
     this.adminService.markAbsence(this.stagiaireId,this.absence).subscribe(
       () => {
         console.log('Absence marked successfully!');
-        this.goToListStagiaires();
+        this.gotoStagiaireList()
+      
       },
       (error) => {
         console.error('Failed to mark absence:', error);
       }
     );
   }
-  goToListStagiaires(){
-    this.router.navigate(['/admin/liststagiaires']);
+ 
+  gotoStagiaireList(){
+    this.router.navigate(['/admin/listStagiaires']);
   }
 
 

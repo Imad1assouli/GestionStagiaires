@@ -2,11 +2,9 @@ package com.GestionStagiaires.GestionStagiaires.Controller;
 
 import com.GestionStagiaires.GestionStagiaires.Service.Implementations.UserServiceImpl;
 import com.GestionStagiaires.GestionStagiaires.Service.Interfaces.UserService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api/login")
 public class LoginController {

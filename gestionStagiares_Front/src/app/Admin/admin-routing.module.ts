@@ -14,6 +14,8 @@ import { AffecterStageComponent } from './Stages/affecter-stage/affecter-stage.c
 import { AbsenceComponent } from './Stagiaires/absence/absence.component';
 import { UpdateUtilisateurComponent } from './gestion_utilisateurs/update-utilisateur/update-utilisateur.component';
 import { UpadteStagiaireComponent } from './Stagiaires/upadte-stagiaire/upadte-stagiaire.component';
+import { ViewStagiaireAdminDrhComponent } from '../AdminDRH/gestion-stagiaires/view-stagiaire-admin-drh/view-stagiaire-admin-drh.component';
+import { ViewStagiaireComponent } from './Stagiaires/view-stagiaire/view-stagiaire.component';
 
 
 const routes: Routes = [
@@ -31,10 +33,13 @@ const routes: Routes = [
       { path: 'updateStage/:id', component: UpdateStageAdminComponent },
       { path: 'affecterStage/:id', component:AffecterStageComponent  },
       { path: 'markAbsence/:id', component:AbsenceComponent  },
-  
+      {path:'ViewStagiaire/:id',component:ViewStagiaireComponent},
+
       {path:'updateuser/:userId',component:UpdateUtilisateurComponent},
       {path:'updatestagiaire/:stagiaireId',component:UpadteStagiaireComponent},
+
       // Add more child routes as needed
+      
     ]
   },
 ];

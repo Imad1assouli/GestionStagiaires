@@ -23,4 +23,8 @@ export class ChefDrhService {
   public createStage(stage:Stage):Observable<Object>{
     return this.httpClient.post(this.baseUrl2, stage);
   }
+  
+  public getStagiaire(id:number): Observable<Stagiaire> {
+    return this.httpClient.get<Stagiaire>(`${this.baseUrl}/${id}`);
+  }
 }

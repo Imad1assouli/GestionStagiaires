@@ -9,12 +9,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from '../app-routing.module';
+import { LoginComponent } from '../Login/login/login.component';
 
 @NgModule({
   declarations: [
     AcceuilStagiaireComponent,
     ListStagesStagiaireComponent,
     DemandeStageComponent,
+  
     // Add more components if needed
   ],
   imports: [

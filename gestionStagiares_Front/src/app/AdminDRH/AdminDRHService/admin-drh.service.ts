@@ -20,4 +20,8 @@ export class AdminDrhService {
   public getAllStages(): Observable<Stage[]> {
     return this.httpClient.get<Stage[]>(this.baseUrl2);
   }
+  public getStagiaire(id:number): Observable<Stagiaire>{
+    return this.httpClient.get<Stagiaire>(`${this.baseUrl}/${id}`);
+
+  } 
 }
