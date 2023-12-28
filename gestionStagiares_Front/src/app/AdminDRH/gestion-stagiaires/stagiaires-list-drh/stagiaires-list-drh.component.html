@@ -16,10 +16,10 @@
             <td>{{ stagiaire.email }}</td>
             <td>{{ stagiaire.sujetDemande}}</td>
             <td>
-                <button  *ngIf="stagiaire.stagiaireId !== undefined "class="btn btn-info">Update</button>
-               <button *ngIf="stagiaire.stagiaireId !== undefined" class="btn btn-danger" style="margin-left: 10px;">Delete</button>
+                <button *ngIf="stagiaire.stagiaireId !== undefined" class="btn btn-info" (click)="updateStagiaire(stagiaire.stagiaireId)">Update</button>
+                <button *ngIf="stagiaire.stagiaireId !== undefined" class="btn btn-danger" style="margin-left: 10px;" (click)="deleteStagiaire(stagiaire.stagiaireId)"  >Delete</button>
                 <button *ngIf="stagiaire.stagiaireId !== undefined" class="btn btn-info" style="margin-left: 10px;" (click)="getStagiaireDetails(stagiaire.stagiaireId)">View</button>
-                <button *ngIf="stagiaire.stagiaireId !== undefined" class="btn btn-danger" style="margin-left: 10px;">Absence</button>
+                <button *ngIf="stagiaire.stagiaireId !== undefined" class="btn btn-danger" style="margin-left: 10px;" (click)="markAbsence(stagiaire.stagiaireId)">Absence</button>
 
             </td>
         </tr>

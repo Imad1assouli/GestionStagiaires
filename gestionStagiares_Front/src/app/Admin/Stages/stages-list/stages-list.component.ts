@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Stage } from 'src/app/Model/stage';
 import { AdminService } from '../../AdminService/admin.service';
 import { Router } from '@angular/router';
@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   templateUrl: './stages-list.component.html',
   styleUrls: ['./stages-list.component.css']
 })
-export class StagesListComponent {
+export class StagesListComponent implements OnInit {
   stages: Stage[] = [];
  
   constructor(private adminService: AdminService, private router: Router) {

@@ -10,13 +10,17 @@ import { Router } from '@angular/router';
 })
 export class StagesListDRHComponent implements OnInit {
   stages: Stage[] = [];
-  constructor(private adminDrhService:AdminDrhService,private router:Router) {}
-
-  ngOnInit(): void {
-    this.getAllStages();
+ 
+  constructor(private adminDrhService: AdminDrhService, private router: Router) {
+    
+    
   }
-  getAllStages(){
-    this.adminDrhService.getAllStages().subscribe(
+  ngOnInit() : void {
+    this.getStages();
+
+  }
+  getStages(): void {
+    this.adminDrhService.getAllstages().subscribe(
       (data: Stage[]) => {
         this.stages = data;
       },
@@ -25,4 +29,18 @@ export class StagesListDRHComponent implements OnInit {
       }
     );
   }
+  updateStage(id:number){
+    this.router.navigate(['/adminDrh/updateStage', id]);
+  }
+  deleteStage(id: number): void {
+    this.adminDrhService.deleteStage(id).subscribe(() => {
+      // Reload the list after successful deletion
+      this.getStages();
+    });
+  }
+  affecterStage(id: number) {
+    this.router.navigate(['/adminDrh/affecterStage', id]);
+  }
+
+
 }

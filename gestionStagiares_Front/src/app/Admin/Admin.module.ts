@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
-import { AdminAcceuilComponent } from './admin-acceuil/admin-acceuil.component';
+
 import { StatistiquesComponent } from './statistiques/statistiques.component';
 import { UtilisateursListComponent } from './gestion_utilisateurs/utilisateurs-list/utilisateurs-list.component';
 import { UpdateUtilisateurComponent } from './gestion_utilisateurs/update-utilisateur/update-utilisateur.component';
@@ -18,6 +18,8 @@ import { ViewUtilisateurComponent } from './gestion_utilisateurs/view-utilisateu
 import { UpdateStageAdminComponent } from './Stages/update-stage-admin/update-stage-admin.component';
 import { AddStageAdminComponent } from './Stages/add-stage-admin/add-stage-admin.component';
 import { AffecterStageComponent } from './Stages/affecter-stage/affecter-stage.component';
+import { AdminAcceuilComponent } from './admin-acceuil/admin-acceuil.component';
+
 
 @NgModule({
   declarations: [

@@ -68,6 +68,11 @@ const routes: Routes = [
     { path: '', redirectTo: 'statsDRH', pathMatch: 'full' }, // Add a default child route
     { path: 'stagesList', component: StagesListDRHComponent },
     { path: 'stagiairesList', component: StagiairesListDRHComponent },
+    { path: 'markAbsence/:id', component:AbsenceComponent  },
+    { path: 'listStages', component: StagesListComponent },
+      { path: 'addStage', component: AddStageAdminComponent },
+      { path: 'updateStage/:id', component: UpdateStageAdminComponent },
+      { path: 'affecterStage/:id', component:AffecterStageComponent  },
     {path:'ViewStagiaire/:id',component:ViewStagiaireAdminDrhComponent},
 ]},
 { path: 'chefDrh', component: AcceuilChefDRHComponent, children: [
