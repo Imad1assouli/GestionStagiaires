@@ -20,6 +20,7 @@ export class DemandeStageComponent implements OnInit {
   ngOnInit(): void {
       this.id = this.route.snapshot.params['id'];
       this.getStageById();
+      this.stagiaire.sujetDemande=this.stage.sujet;
   }
 
   onSubmit() {

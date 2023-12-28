@@ -14,9 +14,9 @@
             <td>{{ stagiaire.nom }}</td>
             <td>{{ stagiaire.prenom }}</td>
             <td>{{ stagiaire.email }}</td>
-            <td>{{ stagiaire.stage.sujet }}</td> 
+            <td>{{ stagiaire.sujetDemande }}</td> 
             <td>
-                <button class="btn btn-info">Update</button>
+                <button *ngIf="stagiaire.stagiaireId !== undefined" class="btn btn-info">Update</button>
                 <button *ngIf="stagiaire.stagiaireId !== undefined" class="btn btn-danger" style="margin-left: 10px;">Delete</button>
                 <button *ngIf="stagiaire.stagiaireId !== undefined" class="btn btn-info" style="margin-left: 10px;"(click)="getStagiaireDetails(stagiaire.stagiaireId)">View</button>
                 <button *ngIf="stagiaire.stagiaireId !== undefined" class="btn btn-danger" style="margin-left: 10px;">Absence</button>
