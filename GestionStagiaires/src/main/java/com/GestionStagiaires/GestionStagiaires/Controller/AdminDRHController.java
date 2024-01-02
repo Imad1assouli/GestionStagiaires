@@ -15,7 +15,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api/adminDrh")
 public class AdminDRHController {
@@ -66,7 +66,7 @@ public class AdminDRHController {
         return stagiaireService.getAllCandidats();
     }
 
-    @GetMapping("/stagiaire/{id}")
+    @GetMapping("/stagiaires/{id}")
     public Stagiaire getStagiaireById(@PathVariable Long id) {
         return stagiaireService.getStagiaireById(id);
     }
@@ -79,17 +79,17 @@ public class AdminDRHController {
     public List<Stagiaire> getAllStagiairesStage(@PathVariable Long stageId) {
         return stagiaireService.getAllStagiairesStage(stageId);
     }
-    @PostMapping("/stagiaire")
+    @PostMapping("/stagiaires")
     public void saveStagiaire(@RequestBody Stagiaire stagiaire) {
         stagiaireService.saveStagiaire(stagiaire);
     }
 
-    @DeleteMapping("/stagiaire/{id}")
+    @DeleteMapping("/stagiaires/{id}")
     public void deleteStagiaire(@PathVariable Long id) {
         stagiaireService.deleteStagiaire(id);
     }
 
-    @GetMapping("/stagiaires/{nom}")
+    @GetMapping("/stagiairesnom/{nom}")
     public List<Stagiaire> getStagiairesByNom(@PathVariable String nom) {
         return stagiaireService.getStagiairesByNom(nom);
     }
