@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Absence } from 'src/app/Model/absence';
 import { Stage } from 'src/app/Model/stage';
 import { Stagiaire } from 'src/app/Model/stagiaire';
+import { User } from 'src/app/Model/user';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,8 @@ export class ChefDrhService {
   private baseUr9 = "http://localhost:8080/api/admin/statistics";
   private baseUrl4 = "http://localhost:8080/api/adminDrh/stages/affecter";
   private baseUrl5 = "http://localhost:8080/api/admin/absences";
+  private basuUrl7="http://localhost:8080/api/admin/users";
+  private basuUrl8="http://localhost:8080/api/admin/users";
 
 
   constructor(private httpClient: HttpClient) { }
@@ -63,5 +66,22 @@ export class ChefDrhService {
   }
   affecterStage(idStage: number, idcandidat: number): Observable<any> {
     return this.httpClient.get(`${this.baseUrl4}?stageId=${idStage}&stagiaireId=${idcandidat}`);
+}
+
+public getAllUsers():Observable<User[]>{
+  return this.httpClient.get<User[]>(this.basuUrl7);
+}
+public deleteUser(id: number): Observable<Object> {
+  return this.httpClient.delete(`${this.basuUrl7}/${id}`);
+}
+public getUser(id:number):Observable<User>{
+  return this.httpClient.get<User>(`${this.basuUrl8}/${id}`);
+}
+public updateUser(id:number,user:User): Observable<Object>{
+  return this.httpClient.put<User>(`${this.basuUrl8}/${id}`,user);
+
+}
+public createUser(user:User):Observable<Object>{
+  return this.httpClient.post(this.basuUrl7, user);
 }
 }

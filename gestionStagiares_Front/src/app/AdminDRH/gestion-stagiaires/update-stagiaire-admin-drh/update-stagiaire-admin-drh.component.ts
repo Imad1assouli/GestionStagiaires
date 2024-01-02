@@ -14,7 +14,7 @@ export class UpdateStagiaireAdminDRHComponent implements OnInit {
 
    constructor(private adminDRHService:AdminDrhService,private router:Router,private route: ActivatedRoute){}
 
-  ngOnInit(): void {
+   ngOnInit(): void {
     this.stagiaireId = this.route.snapshot.params['stagiaireId'];
     this.adminDRHService.getStagiaire(this.stagiaireId).subscribe((data: Stagiaire) => this.stagiaire = data);
   }

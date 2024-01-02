@@ -4,7 +4,7 @@
         <tr>
             <th>Nom</th>
             <th>Prenom</th>
-            <th>Email</th>
+            <th>Username</th>
             <th>Role</th>
             <th>Actions</th>
         
@@ -18,9 +18,9 @@
             <td>{{ user.userType }}</td>
             
             <td>
-                <button  class="btn btn-info">Update</button>
-                <button *ngIf="user.userId !== undefined"  class="btn btn-danger" style="margin-left: 10px;">Delete</button>
-                
+                <button  class="btn btn-info" (click)="updateUser(user.userId)">Update</button>
+                <button class="btn btn-danger" style="margin-left: 10px; " (click)="deleteUser(user.userId)" >Delete </button>
+               
             </td>
         </tr>
     </tbody>

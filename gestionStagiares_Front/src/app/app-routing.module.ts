@@ -37,6 +37,7 @@ import { AffecterStageComponentChefDRH } from './ChefDRH/gestion-stagesDRH/affec
 import { AbsenceChefDRHComponent } from './ChefDRH/gestion-stagiaires/absence-chef-drh/absence-chef-drh.component';
 import { UpdateStagiaireChefDRHComponent } from './ChefDRH/gestion-stagiaires/update-stagiaire-chef-drh/update-stagiaire-chef-drh.component';
 import { UpdateStagiaireAdminDRHComponent } from './AdminDRH/gestion-stagiaires/update-stagiaire-admin-drh/update-stagiaire-admin-drh.component';
+import { UpdateUtilisateurDRHComponent } from './ChefDRH/gestion-utilisateurs/update-utilisateur-drh/update-utilisateur-drh.component';
 
 
 
@@ -83,6 +84,7 @@ const routes: Routes = [
 ]},
 { path: 'chefDrh', component: AcceuilChefDRHComponent, children: [
    { path: 'stats', component: StatistiquesChefDRHComponent },
+   {path:'updateuser/:userId',component:UpdateUtilisateurDRHComponent},
    { path: '', redirectTo: 'stats', pathMatch: 'full' },
    { path: 'listUtlisaeurs', component: UtilisateursDRHListComponent },
    { path: 'ajouterUtilisateur', component: CreateUtilisateurDRHComponent },

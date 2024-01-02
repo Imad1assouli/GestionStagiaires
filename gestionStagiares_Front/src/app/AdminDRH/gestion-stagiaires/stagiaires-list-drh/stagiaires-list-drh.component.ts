@@ -27,9 +27,6 @@ export class StagiairesListDRHComponent {
       }
     );
   }
-  getStagiaireDetails(id:number){
-    this.router.navigate(['/adminDrh/ViewStagiaire',id]);
-  }
 
   markAbsence(id:number){
     this.router.navigate(['/adminDrh/markAbsence',id]);
@@ -47,5 +44,7 @@ export class StagiairesListDRHComponent {
   updateStagiaire(stagiaireId:number){
     this.router.navigate(['/adminDrh/updatestagiaire',stagiaireId]);
   }
-
+  getStagiaireDetails(id:number){
+    this.router.navigate(['/adminDrh/ViewStagiaire',id]);
+  }
 }
