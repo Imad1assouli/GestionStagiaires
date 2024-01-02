@@ -4,7 +4,7 @@ import { AdminDrhService } from '../../AdminDRHService/admin-drh.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-affecter-stage',
+  selector: 'app-affecter-stage-AdminDrh',
   templateUrl: './affecter-stage.component.html',
   styleUrls: ['./affecter-stage.component.css']
 })

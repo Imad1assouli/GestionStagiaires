@@ -29,12 +29,15 @@ export class AdminDrhService {
     return this.httpClient.get<Stagiaire>(`${this.baseUrl}/${id}`);
 
   } 
-  public deleteStagiaire(id:number):Observable<Object>{
-    return this.httpClient.delete(`${this.baseUrl}/${id}`);
-  }
   public updateStagiaire(stagiaireId: number, stagiaire: Stagiaire): Observable<Object> {
     return this.httpClient.put<Stagiaire>(`${this.baseUrl}/${stagiaireId}`, stagiaire);
   }
+  
+  public deleteStagiaire(id: number): Observable<Object> {
+    return this.httpClient.delete(`${this.baseUrl}/${id}`);
+  }
+  
+ 
   public markAbsence(id: number, absence: Absence) {
     return this.httpClient.post(`${this.baseUrl5}?stagiaireId=${id}`,absence);
 }

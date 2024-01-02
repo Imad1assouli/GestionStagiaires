@@ -1,0 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Kablammo&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Oswald&display=swap');
+a.logo{
+    text-decoration: none;
+    font-family: 'Kablammo';
+    font-size: 28px;
+    font-weight: 900;
+    color: black;
+}

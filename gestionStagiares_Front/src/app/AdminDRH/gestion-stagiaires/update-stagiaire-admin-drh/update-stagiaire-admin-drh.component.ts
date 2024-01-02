@@ -12,14 +12,14 @@ export class UpdateStagiaireAdminDRHComponent implements OnInit {
   stagiaire:Stagiaire=new Stagiaire();
   stagiaireId!:number;
 
-   constructor(private adminDRHService:AdminDrhService,private router:Router,private route: ActivatedRoute){}
+  constructor(private adminDRHService:AdminDrhService,private router:Router,private route: ActivatedRoute){}
 
   ngOnInit(): void {
     this.stagiaireId = this.route.snapshot.params['stagiaireId'];
     this.adminDRHService.getStagiaire(this.stagiaireId).subscribe((data: Stagiaire) => this.stagiaire = data);
   }
 
-  onSubmit(){
+  onSubmit() {
     this.adminDRHService.updateStagiaire(this.stagiaireId, this.stagiaire).subscribe(
       (data) => {
         console.log(data);
@@ -30,6 +30,7 @@ export class UpdateStagiaireAdminDRHComponent implements OnInit {
       }
     );
   }
+  
   
   gotoStagiaireList(){
     this.router.navigate(['/adminDrh/listStagiaires']);

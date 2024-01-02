@@ -37,11 +37,7 @@ import { UpdateStageComponent } from './gestion_stages/update-stage/update-stage
     ],
     imports: [
       CommonModule,
-      AdminDRHRouting,
-      // Remove the following line as RouterModule is already imported in AdminDRHRouting
-      // RouterModule, 
-      // Import other modules needed for the admin module
-      BrowserModule,
+      RouterModule,
       FormsModule,
       HttpClientModule,
     ],

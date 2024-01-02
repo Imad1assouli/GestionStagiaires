@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Stagiaire } from 'src/app/Model/stagiaire';
 
 @Component({
-  selector: 'app-affecter-stage',
+  selector: 'app-affecter-stage-ChefDrh',
   templateUrl: './affecter-stage.component.html',
   styleUrls: ['./affecter-stage.component.css']
 })
