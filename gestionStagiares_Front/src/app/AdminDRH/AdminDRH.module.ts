@@ -16,7 +16,7 @@ import { AdminDRHRouting } from './AdminDRH-routing.module';
 import { DetailsStageComponent } from './gestion_stages/details-stage/details-stage.component';
 import { StatistiquesAdminDRHComponent } from './statistiques-admin-drh/statistiques-admin-drh.component';
 import { AddStageAdmindrhComponent } from './gestion_stages/add-stage-admindrh/add-stage-admindrh.component';
-import { AffecterStageComponent } from './gestion_stages/affecter-stage/affecter-stage.component';
+import {  AffecterStageComponentAdminDrh } from './gestion_stages/affecter-stage/affecter-stage.component';
 import { UpdateStageComponent } from './gestion_stages/update-stage/update-stage.component';
 
 // admin.module.ts
@@ -31,7 +31,7 @@ import { UpdateStageComponent } from './gestion_stages/update-stage/update-stage
       DetailsStageComponent,
       StatistiquesAdminDRHComponent,
       AddStageAdmindrhComponent,
-      AffecterStageComponent,
+      AffecterStageComponentAdminDrh,
       UpdateStageComponent,
       // Include other components here
     ],

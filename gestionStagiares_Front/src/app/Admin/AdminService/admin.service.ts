@@ -34,9 +34,11 @@ export class AdminService {
   public getStagiaire(stagiaireId:number):Observable<Stagiaire>{
     return this.httpClient.get<Stagiaire>(`${this.baseUrl}/${stagiaireId}`);
   }
+  
   public getCandidats(): Observable<Stagiaire[]> {
     return this.httpClient.get<Stagiaire[]>(this.baseUrl3);
   }
+  
   getStatistics(): Observable<any> {
     return this.httpClient.get<any>(`${this.baseUr9}`);
   }
@@ -64,6 +66,7 @@ export class AdminService {
   affecterStage(idStage: number, idcandidat: number): Observable<any> {
     return this.httpClient.get(`${this.baseUrl4}?stageId=${idStage}&stagiaireId=${idcandidat}`);
   }
+  
   public markAbsence(id: number, absence: Absence) {
     return this.httpClient.post(`${this.baseUrl5}?stagiaireId=${id}`,absence);
 }

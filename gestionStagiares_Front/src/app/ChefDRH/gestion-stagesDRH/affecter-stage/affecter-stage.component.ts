@@ -1,18 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { Stagiaire } from 'src/app/Model/stagiaire';
-import { AdminDrhService } from '../../AdminDRHService/admin-drh.service';
+import { ChefDrhService } from '../../ChefDRHService/chef-drh.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Stagiaire } from 'src/app/Model/stagiaire';
 
 @Component({
   selector: 'app-affecter-stage',
   templateUrl: './affecter-stage.component.html',
   styleUrls: ['./affecter-stage.component.css']
 })
-export class AffecterStageComponentAdminDrh implements OnInit {
+export class AffecterStageComponentChefDRH implements OnInit {
   stagiaires: Stagiaire[] = [];
   idStage!:number;
 
-  constructor(private adminDrhService: AdminDrhService, private router: Router,private route :ActivatedRoute) { }
+  constructor(private chefDrhService: ChefDrhService, private router: Router,private route :ActivatedRoute) { }
 
   ngOnInit(): void {
     this.idStage=this.route.snapshot.params['id'];
@@ -21,7 +21,7 @@ export class AffecterStageComponentAdminDrh implements OnInit {
   
 
   getCandidats(): void {
-    this.adminDrhService.getCandidats().subscribe(
+    this.chefDrhService.getCandidats().subscribe(
       (data: Stagiaire[]) => {
         this.stagiaires = data;
       },
@@ -33,7 +33,7 @@ export class AffecterStageComponentAdminDrh implements OnInit {
   
   affecterStage(idcandidat: number) {
     console.log('affecterStage called with candidat:', idcandidat);
-    this.adminDrhService.affecterStage(this.idStage, idcandidat).subscribe(
+    this.chefDrhService.affecterStage(this.idStage, idcandidat).subscribe(
       (data) => {
         console.log('Stage affected successfully:', data);
         this.goToStagiairesList();
@@ -48,7 +48,7 @@ export class AffecterStageComponentAdminDrh implements OnInit {
   
   
   goToStagiairesList(){
-    this.router.navigate(["admin/listStagiaires"]);
+    this.router.navigate(["chefDrh/listStagiaires"]);
   }
   
 

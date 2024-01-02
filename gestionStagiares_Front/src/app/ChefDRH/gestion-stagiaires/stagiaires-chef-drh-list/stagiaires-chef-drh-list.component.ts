@@ -27,6 +27,19 @@ export class StagiairesChefDrhListComponent {
       }
     );
   }
+  markAbsence(id:number){
+    this.router.navigate(['/chefDrh/markAbsence',id]);
+  }
+  updateStagiaire(idStagiaire:number){
+    this.router.navigate(['/chefDrh/updatestagiaire',idStagiaire]);
+  }
+  deleteStagiaire(id: number): void {
+    this.chefDrhService.deleteStagiaire(id).subscribe(
+      data => {
+        console.log(data);
+        this.getStagiaires();
+      });
+  }
   getStagiaireDetails(id:number){
     this.router.navigate(['/chefDrh/ViewStagiaire',id]);
   }

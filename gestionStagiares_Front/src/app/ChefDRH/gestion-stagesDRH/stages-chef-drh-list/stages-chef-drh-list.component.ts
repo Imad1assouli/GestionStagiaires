@@ -32,5 +32,18 @@ export class StagesChefDRHListComponent implements OnInit {
 
     
   }
+  updateStage(id:number){
+    this.router.navigate(['/chefDrh/updateStage', id]);
+  }
+  deleteStage(id: number): void {
+    this.chefDRHService.deleteStage(id).subscribe(() => {
+      // Reload the list after successful deletion
+      this.getAllstages();
+    });
+  }
+  affecterStage(id: number) {
+    this.router.navigate(['/chefDrh/affecterStage', id]);
+  }
+
 
 }

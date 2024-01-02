@@ -10,11 +10,11 @@
         <p class="card-text"><strong>Type:</strong> {{ stage.type }}</p>
         <p class="card-text"><strong>Status:</strong> {{ stage.status }}</p>
   
-          <!-- View Details Button -->
+        
           <button class="btn btn-primary" style="margin-left: 10px;">détails</button>
   
-          <!-- Assign Internship Button -->
-          <button class="btn btn-success" style="margin-left: 10px;" (click)="affecterStage(stage.stageId)" >Assign Internship</button>
+          
+          <button class="btn btn-success" style="margin-left: 10px;" (click)="affecterStage(stage.stageId)" >Affecter Stage</button>
           <button class="btn btn-danger" style="margin-left: 10px;" (click)="deleteStage(stage.stageId)">Delete</button>
           <button class="btn btn-primary" style="margin-left: 10px;" (click)="updateStage(stage.stageId)">update</button>
         </div>

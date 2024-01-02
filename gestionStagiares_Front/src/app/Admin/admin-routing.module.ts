@@ -30,8 +30,9 @@ const routes: Routes = [
       { path: 'listStagiaires', component: StagiairesListComponent },
       { path: 'addStage', component: AddStageAdminComponent },
 
-      { path: 'updateStage/:id', component: UpdateStageAdminComponent },
+     
       { path: 'affecterStage/:id', component:AffecterStageComponent  },
+      { path: 'updateStage/:id', component: UpdateStageAdminComponent },
       { path: 'markAbsence/:id', component:AbsenceComponent  },
       {path:'ViewStagiaire/:id',component:ViewStagiaireComponent},
 

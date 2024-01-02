@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AffecterStageComponentAdminDrh } from './affecter-stage.component';
+import { AffecterStageComponentChefDRH } from './affecter-stage.component';
 
 describe('AffecterStageComponent', () => {
-  let component: AffecterStageComponentAdminDrh;
-  let fixture: ComponentFixture<AffecterStageComponentAdminDrh>;
+  let component: AffecterStageComponentChefDRH;
+  let fixture: ComponentFixture<AffecterStageComponentChefDRH>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [AffecterStageComponentAdminDrh]
+      declarations: [AffecterStageComponentChefDRH]
     });
-    fixture = TestBed.createComponent(AffecterStageComponentAdminDrh);
+    fixture = TestBed.createComponent(AffecterStageComponentChefDRH);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

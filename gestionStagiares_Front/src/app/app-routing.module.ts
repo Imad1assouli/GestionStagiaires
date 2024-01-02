@@ -31,7 +31,12 @@ import { LoginComponent } from './Login/login/login.component';
 import { ViewStagiaireAdminDrhComponent } from './AdminDRH/gestion-stagiaires/view-stagiaire-admin-drh/view-stagiaire-admin-drh.component';
 import { ViewStagiaireComponent } from './Admin/Stagiaires/view-stagiaire/view-stagiaire.component';
 import { ViewStagiaireChefDRHComponent } from './ChefDRH/gestion-stagiaires/view-stagiaire-chef-drh/view-stagiaire-chef-drh.component';
-
+import { UpdateStageChefDRHComponent } from './ChefDRH/gestion-stagesDRH/update-stage-chef-drh/update-stage-chef-drh.component';
+import { AffecterStageComponentAdminDrh } from './AdminDRH/gestion_stages/affecter-stage/affecter-stage.component';
+import { AffecterStageComponentChefDRH } from './ChefDRH/gestion-stagesDRH/affecter-stage/affecter-stage.component';
+import { AbsenceChefDRHComponent } from './ChefDRH/gestion-stagiaires/absence-chef-drh/absence-chef-drh.component';
+import { UpdateStagiaireChefDRHComponent } from './ChefDRH/gestion-stagiaires/update-stagiaire-chef-drh/update-stagiaire-chef-drh.component';
+import { UpdateStagiaireAdminDRHComponent } from './AdminDRH/gestion-stagiaires/update-stagiaire-admin-drh/update-stagiaire-admin-drh.component';
 
 
 
@@ -72,7 +77,8 @@ const routes: Routes = [
     { path: 'listStages', component: StagesListComponent },
       { path: 'addStage', component: AddStageAdminComponent },
       { path: 'updateStage/:id', component: UpdateStageAdminComponent },
-      { path: 'affecterStage/:id', component:AffecterStageComponent  },
+      { path: 'affecterStage/:id', component:AffecterStageComponentAdminDrh  },
+      {path:'updatestagiaire/:stagiaireId',component:UpdateStagiaireAdminDRHComponent},
     {path:'ViewStagiaire/:id',component:ViewStagiaireAdminDrhComponent},
 ]},
 { path: 'chefDrh', component: AcceuilChefDRHComponent, children: [
@@ -84,6 +90,10 @@ const routes: Routes = [
    { path: 'listStagiaires', component: StagiairesChefDrhListComponent },
    { path: 'addStage', component: AddStageChefDRHComponent },
    {path:'ViewStagiaire/:id',component:ViewStagiaireChefDRHComponent},
+   { path: 'updateStage/:id', component: UpdateStageChefDRHComponent },
+   { path: 'affecterStage/:id', component:AffecterStageComponentChefDRH  },
+   { path: 'markAbsence/:id', component:AbsenceChefDRHComponent  },
+   { path: 'updatestagiaire/:stagiaireId', component:UpdateStagiaireChefDRHComponent  },
 ]},
 
 
