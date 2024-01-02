@@ -124,9 +124,9 @@ public class StageServiceImpl implements StageService {
         if (stageOptional.isPresent() && stagiaireOptional.isPresent()) {
             Stage stage = stageOptional.get();
             Stagiaire stagiaire = stagiaireOptional.get();
-
             stage.getStagiaires().add(stagiaire);
             stagiaire.setStage(stage);
+            stagiaire.setSujetDemande(stage.getSujet());
             stagiaire.setStagiaireStatus(StagiaireStatus.STAGIAIRE);
             stagiaireRepository.save(stagiaire);
 
