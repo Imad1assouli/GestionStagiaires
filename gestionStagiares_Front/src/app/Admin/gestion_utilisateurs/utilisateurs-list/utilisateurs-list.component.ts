@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class UtilisateursListComponent implements OnInit {
 
   users:User[]=[];
+  stagiaire: any;
   constructor(private adminService:AdminService, private router: Router){}
 
 
@@ -35,10 +36,9 @@ export class UtilisateursListComponent implements OnInit {
         this.getAllUsers();
       });
   }
-  
+
   updateUser(userId:number){
     this.router.navigate(['/admin/updateuser',userId]);
   }
-
 
 }

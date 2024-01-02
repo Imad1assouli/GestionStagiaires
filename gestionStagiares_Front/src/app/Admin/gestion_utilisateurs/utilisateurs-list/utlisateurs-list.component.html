@@ -7,7 +7,7 @@
             <th>Username</th>
             <th>Role</th>
             <th>Actions</th>
-        
+
         </tr>
     </thead>
     <tbody>
@@ -16,11 +16,10 @@
             <td>{{ user.prenom }}</td>
             <td>{{ user.username }}</td>
             <td>{{ user.userType }}</td>
-            
+
             <td>
                 <button  class="btn btn-info" (click)="updateUser(user.userId)">Update</button>
                 <button class="btn btn-danger" style="margin-left: 10px; " (click)="deleteUser(user.userId)" >Delete </button>
-               
             </td>
         </tr>
     </tbody>

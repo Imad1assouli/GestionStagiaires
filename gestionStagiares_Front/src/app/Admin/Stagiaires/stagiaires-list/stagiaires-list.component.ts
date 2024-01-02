@@ -47,4 +47,5 @@ export class StagiairesListComponent implements OnInit {
   getStagiaireDetails(id:number){
     this.router.navigate(['/admin/ViewStagiaire',id]);
   }
+
 }

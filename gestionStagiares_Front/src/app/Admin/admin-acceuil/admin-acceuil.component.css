@@ -2,28 +2,28 @@
 body {
     margin: 0;
   }
-  
+
   /* Custom styles for the navbar */
   .navbar {
     background-color: #343a40; /* Dark background color */
   }
-  
+
   .navbar-brand img {
     max-width: 100%;
     height: auto;
     filter: brightness(0) invert(1); /* Invert logo color for better visibility on dark background */
   }
-  
+
   .navbar-text {
     color: aliceblue; /* Text color */
     font-size: 1.2rem;
     margin-right: 1rem;
   }
-  
+
   .navbar-nav .nav-link {
     color: aliceblue; /* Text color */
   }
-  
+
   /* Custom styles for the sidebar */
   .sidebar {
     position: fixed;
@@ -35,7 +35,7 @@ body {
     box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.1);
     background-color: #f8f9fa; /* Light background color */
   }
-  
+
   .sidebar-sticky {
     position: relative;
     top: 0;
@@ -44,17 +44,17 @@ body {
     overflow-x: hidden;
     overflow-y: auto;
   }
-  
+
   .nav-link.active {
     color: #343a; /* Active link text color */
   }
-  
+
   /* Custom styles for the main content */
   main {
     margin-top: 56px;
     padding: 2rem;
   }
-  
+
   /* Media query for mobile */
   @media (max-width: 768px) {
     .sidebar {
@@ -64,36 +64,35 @@ body {
       background-color: #343a40; /* Dark background color for mobile */
       color: aliceblue; /* Text color for mobile */
     }
-  
+
     .navbar-toggler-icon {
       background-color: aliceblue; /* Color for the mobile menu icon */
     }
-  
+
     .navbar-collapse {
       background-color: #343a40; /* Dark background color for mobile menu */
     }
-  
+
     .navbar-nav .nav-link {
       color: aliceblue; /* Text color for mobile menu */
     }
-  
+
     .navbar-text {
       margin-right: 0;
     }
-  
+
     main {
       margin-top: 0;
       padding-top: 1rem;
     }
   }
-  
+
   /* Additional Sidebar Items with Icons */
   .nav-link.with-icon {
     display: flex;
     align-items: center;
   }
-  
+
   .nav-link.with-icon span {
     margin-right: 0.5rem;
   }
-  

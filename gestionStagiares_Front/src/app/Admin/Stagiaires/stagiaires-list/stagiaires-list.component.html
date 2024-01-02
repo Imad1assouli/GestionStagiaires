@@ -13,14 +13,15 @@
         <tr *ngFor="let stagiaire of stagiaires">
             <td>{{ stagiaire.nom }}</td>
             <td>{{ stagiaire.prenom }}</td>
-            <td>{{ stagiaire.email }}</td>
-            <td>{{ stagiaire.sujetDemande}}</td> 
+            <td>
+              <a href="mailto:{{stagiaire.email}}">{{stagiaire.email}}</a>
+            </td>
+            <td>{{ stagiaire.sujetDemande}}</td>
             <td>
                 <button *ngIf="stagiaire.stagiaireId !== undefined" class="btn btn-info" (click)="updateStagiaire(stagiaire.stagiaireId)">Update</button>
                 <button *ngIf="stagiaire.stagiaireId !== undefined" class="btn btn-danger" style="margin-left: 10px;" (click)="deleteStagiaire(stagiaire.stagiaireId)"  >Delete</button>
                 <button *ngIf="stagiaire.stagiaireId !== undefined" class="btn btn-info" style="margin-left: 10px;"(click)="getStagiaireDetails(stagiaire.stagiaireId)">View</button>
                 <button *ngIf="stagiaire.stagiaireId !== undefined" class="btn btn-danger" style="margin-left: 10px;" (click)="markAbsence(stagiaire.stagiaireId)">Absence</button>
-
             </td>
         </tr>
     </tbody>

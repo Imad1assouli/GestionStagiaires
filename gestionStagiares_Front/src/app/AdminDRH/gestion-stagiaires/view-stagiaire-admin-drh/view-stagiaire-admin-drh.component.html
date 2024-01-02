@@ -1,69 +1,69 @@
 <div class="row print-container d-flex justify-content-center mt-5"  id="printable-content">
-    <div class="certificate">
-        <h2>Certificate of Internship</h2>
-        <hr>
-        <div class="details">
-            <p>This is to certify that</p>
-            <h3>{{ stagiaire.nom }} {{ stagiaire.prenom }}</h3>
-            <p>has successfully completed an internship at our organization.</p>
-        </div>
-        <div class="additional-details">
-            <dl>
-                <div class="detail">
-                    <dt>Stagiaire ID:</dt>
-                    <dd>{{ stagiaire.stagiaireId }}</dd>
-                </div>
-
-                <div class="detail">
-                    <dt>CIN:</dt>
-                    <dd>{{ stagiaire.cin }}</dd>
-                </div>
-
-                <div class="detail">
-                    <dt>Etablissement:</dt>
-                    <dd>{{ stagiaire.etablissement }}</dd>
-                </div>
-
-                <div class="detail">
-                    <dt>Filiere:</dt>
-                    <dd>{{ stagiaire.filiere }}</dd>
-                </div>
-
-                <div class="detail">
-                    <dt>Adresse:</dt>
-                    <dd>{{ stagiaire.adresse }}</dd>
-                </div>
-
-                <div class="detail">
-                    <dt>Telephone:</dt>
-                    <dd>{{ stagiaire.telephone }}</dd>
-                </div>
-
-                <div class="detail">
-                    <dt>Date de Naissance:</dt>
-                    <dd>{{ stagiaire.dateNaissance | date }}</dd>
-                </div>
-
-            
-                <div class="detail">
-                    <dt>Date de Demande:</dt>
-                    <dd>{{ stagiaire.dateDemande | date }}</dd>
-                </div>
-
-                <div class="detail">
-                    <dt>Stagiaire Status:</dt>
-                    <dd>{{ stagiaire.stagiaireStatus }}</dd>
-                </div>
-
-                <div class="detail">
-                    <dt>Stage:</dt>
-                    <dd>{{ stagiaire.sujetDemande  }}</dd>
-                    <!-- Assuming 'sujet' is a property of the 'Stage' class. Update it based on your actual structure -->
-                </div>
-            </dl>
-        </div>
-        <div class="signature">
-            <p>Authorized Signature</p>
-        </div>
+  <div class="certificate">
+    <h2>Certificate of Internship</h2>
+    <hr>
+    <div class="details">
+      <p>This is to certify that</p>
+      <h3>{{ stagiaire.nom }} {{ stagiaire.prenom }}</h3>
+      <p>has successfully completed an internship at our organization.</p>
     </div>
+    <div class="additional-details">
+      <dl>
+        <div class="detail">
+          <dt>Stagiaire ID:</dt>
+          <dd>{{ stagiaire.stagiaireId }}</dd>
+        </div>
+
+        <div class="detail">
+          <dt>CIN:</dt>
+          <dd>{{ stagiaire.cin }}</dd>
+        </div>
+
+        <div class="detail">
+          <dt>Etablissement:</dt>
+          <dd>{{ stagiaire.etablissement }}</dd>
+        </div>
+
+        <div class="detail">
+          <dt>Filiere:</dt>
+          <dd>{{ stagiaire.filiere }}</dd>
+        </div>
+
+        <div class="detail">
+          <dt>Adresse:</dt>
+          <dd>{{ stagiaire.adresse }}</dd>
+        </div>
+
+        <div class="detail">
+          <dt>Telephone:</dt>
+          <dd>{{ stagiaire.telephone }}</dd>
+        </div>
+
+        <div class="detail">
+          <dt>Date de Naissance:</dt>
+          <dd>{{ stagiaire.dateNaissance | date }}</dd>
+        </div>
+
+        <div class="detail">
+          <dt>Date de Demande:</dt>
+          <dd>{{ stagiaire.dateDemande | date }}</dd>
+        </div>
+
+        <div class="detail">
+          <dt>Stagiaire Status:</dt>
+          <dd>{{ stagiaire.stagiaireStatus }}</dd>
+        </div>
+
+        <div class="detail">
+          <dt>Stage:</dt>
+          <dd>{{ stagiaire.sujetDemande }}</dd>
+          <!-- Assuming 'sujet' is a property of the 'Stage' class. Update it based on your actual structure -->
+        </div>
+      </dl>
+    </div>
+    <div class="signature">
+      <p>Authorized Signature</p>
+    </div>
+  </div>
 </div>
+<button class="btn btn-success" (click)="downloadElement()">Télécharger Certificat</button>

@@ -34,16 +34,16 @@ export class AdminService {
   public getStagiaire(stagiaireId:number):Observable<Stagiaire>{
     return this.httpClient.get<Stagiaire>(`${this.baseUrl}/${stagiaireId}`);
   }
-  
+
   public getCandidats(): Observable<Stagiaire[]> {
     return this.httpClient.get<Stagiaire[]>(this.baseUrl3);
   }
-  
+
   getStatistics(): Observable<any> {
     return this.httpClient.get<any>(`${this.baseUr9}`);
   }
-  
-  
+
+
 
   public getAllstages(): Observable<Stage[]>{
      return this.httpClient.get<Stage[]>(this.baseUrl2);
@@ -66,7 +66,7 @@ export class AdminService {
   affecterStage(idStage: number, idcandidat: number): Observable<any> {
     return this.httpClient.get(`${this.baseUrl4}?stageId=${idStage}&stagiaireId=${idcandidat}`);
   }
-  
+
   public markAbsence(id: number, absence: Absence) {
     return this.httpClient.post(`${this.baseUrl5}?stagiaireId=${id}`,absence);
 }
@@ -92,12 +92,14 @@ export class AdminService {
     return this.httpClient.delete(`${this.baseUrl}/${id}`);
   }
 
-  
+
 
   public updateStagiaire(stagiaireId: number, stagiaire: Stagiaire): Observable<Object> {
     return this.httpClient.put<Stagiaire>(`${this.baseUrl}/${stagiaireId}`, stagiaire);
   }
-  
-  
 
+
+  sendEmail(stagiaireId: any) {
+    return this.httpClient.get(`${this.baseUrl}/sendemail?stagiaireId=${stagiaireId}`);
+  }
 }

@@ -21,9 +21,9 @@ import { AdminDRHModule } from './AdminDRH/AdminDRH.module';
   declarations: [
     AppComponent,
     LoginComponent,
-    
 
-    
+
+
   ],
   imports: [
     BrowserModule,
@@ -34,9 +34,9 @@ import { AdminDRHModule } from './AdminDRH/AdminDRH.module';
     HttpClientModule,
     ChefDRHModule,
     AppRoutingModule,
-    
+
      // Keep this as the last import
-  
+
   ],
   providers: [],
   bootstrap: [AppComponent]

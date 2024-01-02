@@ -2,6 +2,7 @@ import { Component,OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Stagiaire } from 'src/app/Model/stagiaire';
 import { AdminDrhService } from '../../AdminDRHService/admin-drh.service';
+import html2canvas from "html2canvas";
 
 @Component({
   selector: 'app-view-stagiaire-admin-drh',
@@ -30,13 +31,23 @@ export class ViewStagiaireAdminDrhComponent implements OnInit {
       }
     );
   }
-  
 
-  printCertificate(): void {
-    window.print();
+  downloadElement(): void {
+    const element = document.getElementById('printable-content') as HTMLElement;
+
+    html2canvas(element, { scrollY: -window.scrollY }).then(canvas => {
+      const image = canvas.toDataURL('image/png');
+
+      const link = document.createElement('a');
+      link.href = image;
+      link.download = 'certificate.png';  // Name of the file to be downloaded
+
+      document.body.appendChild(link); // Append link to body
+      link.click();
+      document.body.removeChild(link); // Remove link after download
+    });
   }
 }
 
 
 
-  
