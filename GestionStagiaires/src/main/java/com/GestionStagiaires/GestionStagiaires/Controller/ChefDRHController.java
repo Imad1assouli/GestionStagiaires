@@ -8,10 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @CrossOrigin
 @RestController
@@ -64,6 +61,10 @@ public class ChefDRHController {
         stagiaireService.saveStagiaire(stagiaire);
     }
 
+    @DeleteMapping("/stagiaires/{id}")
+    public void deleteStagiaire(@PathVariable Long id) {
+        stagiaireService.deleteStagiaire(id);
+    }
     @GetMapping("/stages/statut/{status}")
     public List<Stage> getStagesParStatut(@PathVariable StageStatus status) {
         return stageService.getStagesByStatus(status);
@@ -176,6 +177,18 @@ public class ChefDRHController {
         statistics.put("numberOfAdminDrh",userService.getAllAdminDrh().size() );
         statistics.put("numberOfChefDrh", userService.getAllChefDrh().size());
         return new ResponseEntity<>(statistics, HttpStatus.OK);
+    }
+    @GetMapping("/stages/affecterEnacdrant")
+    public void affecterStageAEncadrant(@RequestParam Long stageId, @RequestParam Long encadrantId) {
+        stageService.affecterStageAEnacdrant(stageId, encadrantId);
+    }
+    @GetMapping("/encadrant/stage/{stageId}")
+    public ResponseEntity<Encadrant> getEncadrantOfStage(@PathVariable Long stageId) {
+        Optional<Encadrant> encadrantOptional = stageService.getEncadrantOfStage(stageId);
+
+        return encadrantOptional
+                .map(encadrant -> ResponseEntity.ok().body(encadrant))
+                .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
 

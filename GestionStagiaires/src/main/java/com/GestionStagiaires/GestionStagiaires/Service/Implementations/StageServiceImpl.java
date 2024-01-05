@@ -1,10 +1,13 @@
 package com.GestionStagiaires.GestionStagiaires.Service.Implementations;
 
+import com.GestionStagiaires.GestionStagiaires.Enum.EncadrantType;
 import com.GestionStagiaires.GestionStagiaires.Enum.StageStatus;
 import com.GestionStagiaires.GestionStagiaires.Enum.StageType;
 import com.GestionStagiaires.GestionStagiaires.Enum.StagiaireStatus;
+import com.GestionStagiaires.GestionStagiaires.Model.Encadrant;
 import com.GestionStagiaires.GestionStagiaires.Model.Stage;
 import com.GestionStagiaires.GestionStagiaires.Model.Stagiaire;
+import com.GestionStagiaires.GestionStagiaires.Repository.EncadrantRepository;
 import com.GestionStagiaires.GestionStagiaires.Repository.StageRepository;
 import com.GestionStagiaires.GestionStagiaires.Repository.StagiaireRepository;
 import com.GestionStagiaires.GestionStagiaires.Service.Interfaces.StageService;
@@ -18,10 +21,12 @@ import java.util.*;
 public class StageServiceImpl implements StageService {
     private StageRepository stageRepository;
     private StagiaireRepository stagiaireRepository;
+    private EncadrantRepository encadrantRepository;
 
-    public StageServiceImpl(StageRepository stageRepository,StagiaireRepository stagiaireRepository){
+    public StageServiceImpl(StageRepository stageRepository,StagiaireRepository stagiaireRepository,EncadrantRepository encadrantRepository){
         this.stageRepository=stageRepository;
         this.stagiaireRepository=stagiaireRepository;
+        this.encadrantRepository=encadrantRepository;
     }
     /**
      * @param stage
@@ -139,6 +144,26 @@ public class StageServiceImpl implements StageService {
 
         }
     }
+    @Override
+    public void affecterStageAEnacdrant(Long stageId, Long encadrantId) {
+        Optional<Stage> stageOptional = stageRepository.findById(stageId);
+        Optional<Encadrant> encadrantOptional = encadrantRepository.findById(encadrantId);
+
+        if (stageOptional.isPresent() && encadrantOptional.isPresent()) {
+            Stage stage = stageOptional.get();
+            Encadrant encadrant = encadrantOptional.get();
+            stage.setEncadrant(encadrant);
+            encadrant.getStagesEncadres().add(stage);
+            encadrant.setEncadrantType(EncadrantType.Affecte);
+            encadrantRepository.save(encadrant);
+            stageRepository.save(stage);
+
+            log.info("encadtant avec ID " + encadrantId + " affecté au stage avec ID " + stageId);
+        } else {
+            log.error("Aucun stage trouvé avec l'ID : " + stageId + " ou aucun encadrant trouvé avec l'ID : " + encadrantId);
+
+        }
+    }
     /**
      * @param encadrantId
      * @return
@@ -212,4 +237,9 @@ public class StageServiceImpl implements StageService {
         return Collections.emptyList();
 
     }
+    @Override
+    public Optional<Encadrant> getEncadrantOfStage(Long stageId) {
+        return stageRepository.findEncadrantByStageId(stageId);
+    }
+
 }

@@ -48,5 +48,7 @@ public class Stage {
     private List<Stagiaire> stagiaires;
 
     @OneToMany(mappedBy = "stage")
+    @JsonIgnore
     private List<Absence> absences;
+
 }

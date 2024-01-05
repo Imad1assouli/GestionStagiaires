@@ -40,8 +40,8 @@ public class Stagiaire {
     @JsonIgnore
     private List<Absence> absences;
 
+
     @ManyToOne()
-    @JoinColumn(name = "stage_id")
     @JsonIgnore
     private Stage stage;
 

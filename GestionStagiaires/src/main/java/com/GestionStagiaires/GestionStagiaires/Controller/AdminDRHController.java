@@ -1,19 +1,13 @@
 package com.GestionStagiaires.GestionStagiaires.Controller;
 
-import com.GestionStagiaires.GestionStagiaires.Model.Absence;
-import com.GestionStagiaires.GestionStagiaires.Model.Stage;
-import com.GestionStagiaires.GestionStagiaires.Model.Stagiaire;
-import com.GestionStagiaires.GestionStagiaires.Model.User;
+import com.GestionStagiaires.GestionStagiaires.Model.*;
 import com.GestionStagiaires.GestionStagiaires.Service.Interfaces.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
@@ -127,5 +121,16 @@ public class AdminDRHController {
     public void updateStagiaire(@RequestParam Long stagiaireId, @RequestBody Stagiaire stagiaire) {
         stagiaireService.updateStagiaire(stagiaireId, stagiaire);
     }
+    @GetMapping("/stages/affecterEnacdrant")
+    public void affecterStageAEncadrant(@RequestParam Long stageId, @RequestParam Long encadrantId) {
+        stageService.affecterStageAEnacdrant(stageId, encadrantId);
+    }
+    @GetMapping("/encadrant/stage/{stageId}")
+    public ResponseEntity<Encadrant> getEncadrantOfStage(@PathVariable Long stageId) {
+        Optional<Encadrant> encadrantOptional = stageService.getEncadrantOfStage(stageId);
 
+        return encadrantOptional
+                .map(encadrant -> ResponseEntity.ok().body(encadrant))
+                .orElseGet(() -> ResponseEntity.notFound().build());
+    }
 }

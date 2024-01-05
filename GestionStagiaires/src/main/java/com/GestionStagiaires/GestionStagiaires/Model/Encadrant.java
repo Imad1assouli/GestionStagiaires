@@ -1,6 +1,7 @@
 package com.GestionStagiaires.GestionStagiaires.Model;
 
 import com.GestionStagiaires.GestionStagiaires.Enum.EncadrantType;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -27,5 +28,7 @@ public class Encadrant {
     private EncadrantType encadrantType;
 
     @OneToMany(mappedBy = "encadrant")
+    @JsonIgnore
     private List<Stage> stagesEncadres;
+
 }

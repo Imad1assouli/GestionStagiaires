@@ -26,5 +26,6 @@ public interface EncadrantService {
     List<Encadrant> getEncadrantsByType(EncadrantType encadrantType);
 
     void updateEncadrant(Long encadrantId, Encadrant updatedEncadrant);
+
 }
 

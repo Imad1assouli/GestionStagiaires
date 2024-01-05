@@ -10,10 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
@@ -219,6 +216,18 @@ public class AdminController {
     @GetMapping("/stages/affecter")
     public void affecterStageAStagiaire(@RequestParam Long stageId, @RequestParam Long stagiaireId) {
         stageService.affecterStageAStagiaire(stageId, stagiaireId);
+    }
+    @GetMapping("/stages/affecterEnacdrant")
+    public void affecterStageAEncadrant(@RequestParam Long stageId, @RequestParam Long encadrantId) {
+        stageService.affecterStageAEnacdrant(stageId, encadrantId);
+    }
+    @GetMapping("/encadrant/stage/{stageId}")
+    public ResponseEntity<Encadrant> getEncadrantOfStage(@PathVariable Long stageId) {
+        Optional<Encadrant> encadrantOptional = stageService.getEncadrantOfStage(stageId);
+
+        return encadrantOptional
+                .map(encadrant -> ResponseEntity.ok().body(encadrant))
+                .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
 }
