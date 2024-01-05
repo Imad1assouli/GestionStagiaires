@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Absence } from 'src/app/Model/absence';
+import { Encadrant } from 'src/app/Model/encadrant';
 import { Stage } from 'src/app/Model/stage';
 import { Stagiaire } from 'src/app/Model/stagiaire';
 
@@ -9,12 +10,15 @@ import { Stagiaire } from 'src/app/Model/stagiaire';
   providedIn: 'root'
 })
 export class AdminDrhService {
-  private baseUrl = "http://localhost:8080/api/adminDrh/stagiaires";
+  private baseUrl = "http://localhost:8080/api/admin/stagiaires";
   private baseUrl2 = "http://localhost:8080/api/adminDrh/stages";
   private baseUrl5 = "http://localhost:8080/api/admin/absences";
   private baseUrl4 = "http://localhost:8080/api/admin/stages/affecter";
   private baseUrl3 = "http://localhost:8080/api/admin/candidats";
   private baseUr9 = "http://localhost:8080/api/admin/statistics";
+  private baseUrl11 = "http://localhost:8080/api/admin/encadrant/stage";
+  private basuUrl9="http://localhost:8080/api/admin/encadrants";
+  private baseUrl0 = "http://localhost:8080/api/admin/stages/affecterEnacdrant";
 
   constructor(private httpClient: HttpClient) { }
 
@@ -67,4 +71,17 @@ public getCandidats(): Observable<Stagiaire[]> {
 }
 getStatistics(): Observable<any> {
   return this.httpClient.get<any>(`${this.baseUr9}`);
-}}
+}
+
+
+  getEncadrantOfStage(stageId: number): Observable<Encadrant> {
+    return this.httpClient.get<Encadrant>(`${this.baseUrl11}/${stageId}`);
+  }
+ 
+  affecterEncadrant(idStage: number, idEncadrant: number): Observable<any> {
+    return this.httpClient.get(`${this.baseUrl0}?stageId=${idStage}&encadrantId=${idEncadrant}`);
+  }
+  public getAllEncadrants(): Observable<Encadrant[]> {
+    return this.httpClient.get<Encadrant[]>(this.basuUrl9);
+  }
+}

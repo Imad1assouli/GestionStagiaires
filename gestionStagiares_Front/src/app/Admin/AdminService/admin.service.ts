@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Absence } from 'src/app/Model/absence';
+import { Encadrant } from 'src/app/Model/encadrant';
 import { Stage } from 'src/app/Model/stage';
 import { Stagiaire } from 'src/app/Model/stagiaire';
 import { User } from 'src/app/Model/user';
@@ -25,6 +26,11 @@ export class AdminService {
   private baseUrl6 = "http://localhost:8080/api/admin/stages";
   private basuUrl7="http://localhost:8080/api/admin/users";
   private basuUrl8="http://localhost:8080/api/admin/users";
+  private basuUrl9="http://localhost:8080/api/admin/encadrants";
+  private baseUrl0 = "http://localhost:8080/api/admin/stages/affecterEnacdrant";
+  private baseUrl11 = "http://localhost:8080/api/admin/encadrant/stage";
+  
+  
 
   constructor(private httpClient: HttpClient) { }
 
@@ -67,8 +73,15 @@ export class AdminService {
     return this.httpClient.get(`${this.baseUrl4}?stageId=${idStage}&stagiaireId=${idcandidat}`);
   }
 
+  affecterEncadrant(idStage: number, idEncadrant: number): Observable<any> {
+    return this.httpClient.get(`${this.baseUrl0}?stageId=${idStage}&encadrantId=${idEncadrant}`);
+  }
+
   public markAbsence(id: number, absence: Absence) {
     return this.httpClient.post(`${this.baseUrl5}?stagiaireId=${id}`,absence);
+}
+public getAllEncadrants(): Observable<Encadrant[]> {
+  return this.httpClient.get<Encadrant[]>(this.basuUrl9);
 }
 
 
@@ -90,6 +103,10 @@ export class AdminService {
   }
   public deleteStagiaire(id:number):Observable<Object>{
     return this.httpClient.delete(`${this.baseUrl}/${id}`);
+  }
+  
+  getEncadrantOfStage(stageId: number): Observable<Encadrant> {
+    return this.httpClient.get<Encadrant>(`${this.baseUrl11}/${stageId}`);
   }
 
 

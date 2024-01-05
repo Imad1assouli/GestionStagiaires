@@ -18,6 +18,7 @@ import { StatistiquesAdminDRHComponent } from './statistiques-admin-drh/statisti
 import { AddStageAdmindrhComponent } from './gestion_stages/add-stage-admindrh/add-stage-admindrh.component';
 import {  AffecterStageComponentAdminDrh } from './gestion_stages/affecter-stage/affecter-stage.component';
 import { UpdateStageComponent } from './gestion_stages/update-stage/update-stage.component';
+import { EncadransListAdminDrhComponent } from './Encadrants/encadrans-list-admin-drh/encadrans-list-admin-drh.component';
 
 // admin.module.ts
 @NgModule({
@@ -33,6 +34,7 @@ import { UpdateStageComponent } from './gestion_stages/update-stage/update-stage
       AddStageAdmindrhComponent,
       AffecterStageComponentAdminDrh,
       UpdateStageComponent,
+      EncadransListAdminDrhComponent,
       // Include other components here
     ],
     imports: [

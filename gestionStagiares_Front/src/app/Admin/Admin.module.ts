@@ -19,6 +19,7 @@ import { UpdateStageAdminComponent } from './Stages/update-stage-admin/update-st
 import { AddStageAdminComponent } from './Stages/add-stage-admin/add-stage-admin.component';
 import { AffecterStageComponent } from './Stages/affecter-stage/affecter-stage.component';
 import { AdminAcceuilComponent } from './admin-acceuil/admin-acceuil.component';
+import { EncadrantsListComponent } from './Encadrants/encadrants-list/encadrants-list.component';
 
 
 @NgModule({
@@ -37,6 +38,9 @@ import { AdminAcceuilComponent } from './admin-acceuil/admin-acceuil.component';
     UpdateStageAdminComponent,
     AddStageAdminComponent,
     AffecterStageComponent,
+    EncadrantsListComponent,
+    
+    
     // Include other components here
   ],
   imports: [

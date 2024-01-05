@@ -19,6 +19,7 @@ import { ViewStagiaireChefDRHComponent } from './gestion-stagiaires/view-stagiai
 import { AddStageChefDRHComponent } from './gestion-stagesDRH/add-stage-chef-drh/add-stage-chef-drh.component';
 import { StatistiquesChefDRHComponent } from './statistiques-chef-drh/statistiques-chef-drh.component';
 import {  AffecterStageComponentChefDRH } from './gestion-stagesDRH/affecter-stage/affecter-stage.component';
+import { EncadrantsListChefDrhComponent } from './Encadrants/encadrants-list-chef-drh/encadrants-list-chef-drh.component';
 // Import other components and services specific to the admin module
 
 @NgModule({
@@ -37,6 +38,7 @@ import {  AffecterStageComponentChefDRH } from './gestion-stagesDRH/affecter-sta
     AddStageChefDRHComponent,
     StatistiquesChefDRHComponent,
     AffecterStageComponentChefDRH,
+    EncadrantsListChefDrhComponent,
 
     
     // Include other components here

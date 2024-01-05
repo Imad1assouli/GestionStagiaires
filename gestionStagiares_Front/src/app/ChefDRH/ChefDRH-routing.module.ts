@@ -13,6 +13,7 @@ import { AffecterStageComponentChefDRH } from './gestion-stagesDRH/affecter-stag
 import { AbsenceChefDRHComponent } from './gestion-stagiaires/absence-chef-drh/absence-chef-drh.component';
 import { UpdateStagiaireChefDRHComponent } from './gestion-stagiaires/update-stagiaire-chef-drh/update-stagiaire-chef-drh.component';
 import { UpdateUtilisateurDRHComponent } from './gestion-utilisateurs/update-utilisateur-drh/update-utilisateur-drh.component';
+import { EncadrantsListChefDrhComponent } from './Encadrants/encadrants-list-chef-drh/encadrants-list-chef-drh.component';
 
 const routes: Routes = [
     {
@@ -31,6 +32,7 @@ const routes: Routes = [
         { path: 'affecterStage/:id', component:AffecterStageComponentChefDRH  },
         { path: 'markAbsence/:id', component:AbsenceChefDRHComponent  },
         { path: 'updatestagiaire/:idStagiaire', component:UpdateStagiaireChefDRHComponent  },
+        { path: 'affecterEncadrant/:id', component:EncadrantsListChefDrhComponent  },
         
         
         // Add more child routes as needed

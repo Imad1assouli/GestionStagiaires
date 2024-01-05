@@ -13,6 +13,7 @@ import { AddStageAdminComponent } from '../Admin/Stages/add-stage-admin/add-stag
 import { UpdateStageAdminComponent } from '../Admin/Stages/update-stage-admin/update-stage-admin.component';
 import { AffecterStageComponentAdminDrh } from './gestion_stages/affecter-stage/affecter-stage.component';
 import { UpdateStagiaireAdminDRHComponent } from './gestion-stagiaires/update-stagiaire-admin-drh/update-stagiaire-admin-drh.component';
+import { EncadransListAdminDrhComponent } from './Encadrants/encadrans-list-admin-drh/encadrans-list-admin-drh.component';
 
 
 
@@ -31,10 +32,10 @@ const routes: Routes = [
       { path: 'updateStage/:id', component: UpdateStageAdminComponent },
       { path: 'affecterStage/:id', component:AffecterStageComponentAdminDrh  },
       {path:'ViewStagiaire/:id',component:ViewStagiaireAdminDrhComponent},
-      // Add more child routes as needed
+      { path: 'affecterEncadrant/:id', component:EncadransListAdminDrhComponent  },
     ]
   },
-  // Optionally, you can add a wildcard route for 404 handling
+  //wildcard route for 404 handling
   //{ path: '**', component: PageNotFoundComponent }
 ];
 

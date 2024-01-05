@@ -38,6 +38,9 @@ import { AbsenceChefDRHComponent } from './ChefDRH/gestion-stagiaires/absence-ch
 import { UpdateStagiaireChefDRHComponent } from './ChefDRH/gestion-stagiaires/update-stagiaire-chef-drh/update-stagiaire-chef-drh.component';
 import { UpdateStagiaireAdminDRHComponent } from './AdminDRH/gestion-stagiaires/update-stagiaire-admin-drh/update-stagiaire-admin-drh.component';
 import { UpdateUtilisateurDRHComponent } from './ChefDRH/gestion-utilisateurs/update-utilisateur-drh/update-utilisateur-drh.component';
+import { EncadrantsListComponent } from './Admin/Encadrants/encadrants-list/encadrants-list.component';
+import { EncadrantsListChefDrhComponent } from './ChefDRH/Encadrants/encadrants-list-chef-drh/encadrants-list-chef-drh.component';
+import { EncadransListAdminDrhComponent } from './AdminDRH/Encadrants/encadrans-list-admin-drh/encadrans-list-admin-drh.component';
 
 
 
@@ -58,6 +61,7 @@ const routes: Routes = [
     {path:'updateuser/:userId',component:UpdateUtilisateurComponent},
     {path:'updatestagiaire/:stagiaireId',component:UpadteStagiaireComponent},
     {path:'ViewStagiaire/:id',component:ViewStagiaireComponent},
+    { path: 'affecterEncadrant/:id', component:EncadrantsListComponent  },
     // Add more child routes as needed
 
   ]},
@@ -81,6 +85,7 @@ const routes: Routes = [
       { path: 'affecterStage/:id', component:AffecterStageComponentAdminDrh  },
       {path:'updatestagiaire/:stagiaireId',component:UpdateStagiaireAdminDRHComponent},
     {path:'ViewStagiaire/:id',component:ViewStagiaireAdminDrhComponent},
+    { path: 'affecterEncadrant/:id', component:EncadransListAdminDrhComponent  },
 ]},
 { path: 'chefDrh', component: AcceuilChefDRHComponent, children: [
    { path: 'stats', component: StatistiquesChefDRHComponent },
@@ -96,6 +101,7 @@ const routes: Routes = [
    { path: 'affecterStage/:id', component:AffecterStageComponentChefDRH  },
    { path: 'markAbsence/:id', component:AbsenceChefDRHComponent  },
    { path: 'updatestagiaire/:stagiaireId', component:UpdateStagiaireChefDRHComponent  },
+   { path: 'affecterEncadrant/:id', component:EncadrantsListChefDrhComponent  },
 ]},
 
 

@@ -41,6 +41,9 @@ export class StagesListDRHComponent implements OnInit {
   affecterStage(id: number) {
     this.router.navigate(['/adminDrh/affecterStage', id]);
   }
+  affecterEncadrant(id: number) {
+    this.router.navigate(['/adminDrh/affecterEncadrant', id]);
+  }
 
 
 }

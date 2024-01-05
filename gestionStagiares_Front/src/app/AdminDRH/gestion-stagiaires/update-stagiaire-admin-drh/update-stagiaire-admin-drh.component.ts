@@ -33,7 +33,7 @@ export class UpdateStagiaireAdminDRHComponent implements OnInit {
   
   
   gotoStagiaireList(){
-    this.router.navigate(['/adminDrh/listStagiaires']);
+    this.router.navigate(['/adminDrh/stagiairesList']);
   }
 
 }

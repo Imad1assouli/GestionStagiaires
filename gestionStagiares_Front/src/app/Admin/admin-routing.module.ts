@@ -16,6 +16,7 @@ import { UpdateUtilisateurComponent } from './gestion_utilisateurs/update-utilis
 import { UpadteStagiaireComponent } from './Stagiaires/upadte-stagiaire/upadte-stagiaire.component';
 import { ViewStagiaireAdminDrhComponent } from '../AdminDRH/gestion-stagiaires/view-stagiaire-admin-drh/view-stagiaire-admin-drh.component';
 import { ViewStagiaireComponent } from './Stagiaires/view-stagiaire/view-stagiaire.component';
+import { EncadrantsListComponent } from './Encadrants/encadrants-list/encadrants-list.component';
 
 
 const routes: Routes = [
@@ -32,6 +33,7 @@ const routes: Routes = [
 
      
       { path: 'affecterStage/:id', component:AffecterStageComponent  },
+      { path: 'affecterEncadrant/:id', component:EncadrantsListComponent  },
       { path: 'updateStage/:id', component: UpdateStageAdminComponent },
       { path: 'markAbsence/:id', component:AbsenceComponent  },
       {path:'ViewStagiaire/:id',component:ViewStagiaireComponent},

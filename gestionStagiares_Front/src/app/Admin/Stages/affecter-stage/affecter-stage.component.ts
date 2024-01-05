@@ -9,7 +9,6 @@ import { Stagiaire } from 'src/app/Model/stagiaire';
   styleUrls: ['./affecter-stage.component.css']
 })
 export class AffecterStageComponent implements OnInit{
-
   stagiaires: Stagiaire[] = [];
   idStage!:number;
 
