@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { LoginService } from 'src/app/Login/login.service';
 
 @Component({
@@ -8,9 +10,17 @@ import { LoginService } from 'src/app/Login/login.service';
 })
 export class AcceuilChefDRHComponent implements OnInit  {
   username!: string ;
-  constructor(private loginService:LoginService){
+  constructor(private loginService:LoginService ,private router : Router){
   }
   ngOnInit(): void {
       this.username=this.loginService.getAuthenticatedUser();
   }
+  isLoggedIn(): Observable<boolean> {
+    return this.loginService.isLoggedIn();
+ }
+
+ logout(): void {
+   this.loginService.logout();
+   this.router.navigate(['']);
+ }
 }

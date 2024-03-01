@@ -14,3 +14,6 @@ a.logo{
 a.logo:hover{
     color: rgb(2, 112, 255);
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

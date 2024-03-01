@@ -1,0 +1,29 @@
+<div *ngIf="encadreurActuel" class="alert alert-success">
+    <p><strong>Le stage est actuellement encadré par <span style="color: red;">{{ encadreurActuel.nom }}</span> <span style="color: red;">{{ encadreurActuel.prenom }}</span>. Si tu veux changer l'encadrant, utilise le bouton ci-dessous.</strong></p>
+</div>
+
+<h3>List Encadrants</h3>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Prenom</th>
+            <th>Email</th>
+            <th>Status</th>
+            <th>Actions</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let encadrant of encadrants">
+            <td>{{ encadrant.nom }}</td>
+            <td>{{ encadrant.prenom }}</td>
+            <td>{{ encadrant.email }}</td>
+            <td>{{ encadrant.encadrantType}}</td>
+
+            <td>
+                <button  class="btn btn-info" (click)="affecter(encadrant.encadrantId)">Affecter</button>    
+            </td>
+        </tr>
+    </tbody>
+</table>

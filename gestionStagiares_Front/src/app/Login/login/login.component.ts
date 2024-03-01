@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from '../login.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 
@@ -13,44 +14,41 @@ import { LoginService } from '../login.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
-  username: string = '';
-  password: string = '';
-  role: string = '';
-  loginError: boolean = false;
-  
-  constructor(private loginService: LoginService, private router: Router) {}
+  loginData = {
+    username: '',
+    password: ''
+  };
 
-  login(): void {
-    this.loginService.login(this.username, this.password, this.role)
-      .subscribe((result) => {
-        if (result) {
-          this.loginService.isAuthenticated=true;
-          this.loginService.authenticatedUser=this.username;
-          this.navigateToDashboard();
-          
-        } else {
-          this.loginError = true;
-          console.log('Authentication failed');
-        }
-      });
-  }
-   navigateToDashboard(): void {
-    // Navigate based on the user's role
-    switch (this.role) {
-      case 'Admin':
-        this.router.navigate(['/admin']);
-        break;
-      case 'AdminDRH':
-        this.router.navigate(['/adminDrh']);
-        break;
-      case 'ChefDRH':
-        this.router.navigate(['/chefDrh']);
-        break;
-      default:
-        // Handle other roles or show an error
-        console.log('Unknown role');
-        break;
-    }
+  constructor(private loginService: LoginService, private router: Router, private snackBar: MatSnackBar) { }
+
+  ngOnInit(): void {
   }
 
+ // Login Component
+formSubmit() {
+  if (!this.loginData.username || !this.loginData.password) {
+      this.snackBar.open('Email and password are required!', 'Close', { duration: 3000 });
+      return;
+  }
+
+  this.loginService.login(this.loginData.username, this.loginData.password).subscribe(
+      response => {
+          this.loginService.setUser(response);
+          if (response.role === 'Admin') {
+            this.router.navigate(['/admin/stats']);
+          }
+           else if (response.role === 'AdminDRH') {
+              this.router.navigate(['/adminDrh/statsDRH']);
+          } else if (response.role === 'ChefDRH') {
+              this.router.navigate(['/chefDrh/stats']);
+          } else {
+              // Handle other cases or fallback logic
+              
+          }
+      },
+      error => {
+          this.snackBar.open('Invalid email or password!', 'Close', { duration: 3000 });
+      }
+  );
+}
 }

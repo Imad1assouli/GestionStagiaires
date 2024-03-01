@@ -22,6 +22,7 @@ body {
   
   .navbar-nav .nav-link {
     color: aliceblue; /* Text color */
+    cursor: pointer;
   }
   
   /* Custom styles for the sidebar */
