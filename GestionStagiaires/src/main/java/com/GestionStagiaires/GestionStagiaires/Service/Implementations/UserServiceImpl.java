@@ -67,7 +67,7 @@ public class UserServiceImpl implements UserService {
     }
     @Override
     public List<User> getAllAdminDrh() {
-        List<User> listeUsers =userRepository.findByUserType(UserType.AdminDRH);
+        List<User> listeUsers =userRepository.findByRole(UserType.AdminDRH);
         if (!listeUsers.isEmpty()){
             log.info("Liste des users trouvé avec succés ");
             return listeUsers;
@@ -79,7 +79,7 @@ public class UserServiceImpl implements UserService {
     }
     @Override
     public List<User> getAllChefDrh() {
-        List<User> listeUsers =userRepository.findByUserType(UserType.ChefDRH);
+        List<User> listeUsers =userRepository.findByRole(UserType.ChefDRH);
         if (!listeUsers.isEmpty()){
             log.info("Liste des users trouvé avec succés ");
             return listeUsers;
@@ -107,16 +107,14 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getUserByUsername(String username) {
-        Optional<User> user= userRepository.findByUsername(username);
-        if(user.isPresent()){
-            log.info("user trouvé avec le username "+ username );
-            return user.get();
+        User user = userRepository.findByUsername(username);
+        if (user == null) {
+            throw new RuntimeException("User not found with username: " + username);
+            // or return null, depending on how you want to handle this case
         }
-        else{
-            log.warn("Aucun user trouvé avec l ' username "+ username);
-        }
-        return null;
+        return user;
     }
+
 
     @Override
     public void updateUser(Long userId, User newUser) {
@@ -129,7 +127,7 @@ public class UserServiceImpl implements UserService {
             userToUpdate.setPrenom(newUser.getPrenom());
             userToUpdate.setUsername(newUser.getUsername());
             userToUpdate.setPassword(newUser.getPassword());
-            userToUpdate.setUserType(newUser.getUserType());
+            userToUpdate.setRole(newUser.getRole());
 
             // Sauvegardez l'utilisateur mis à jour
             userRepository.save(userToUpdate);
@@ -138,7 +136,7 @@ public class UserServiceImpl implements UserService {
             log.warn("aucun User existant avec cet ID "+userId);
         }
     }
-
+/*
     @Override
     public boolean authentificateAdmin(String username, String password) {
         Optional<User> storedUser = userRepository.findByUsername(username);
@@ -184,4 +182,14 @@ public class UserServiceImpl implements UserService {
 
         return false;
     }
+
+ */
+@Override
+public User authenticate(String username, String password) {
+    User user = userRepository.findByUsername(username);
+    if (user != null && user.getPassword().equals(password)) {
+        return user;
+    }
+    return null;
+}
 }

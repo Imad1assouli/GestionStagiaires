@@ -14,8 +14,9 @@ public interface UserService  {
     void deleteUser(Long UserId);
     User getUserByUsername(String username);
     void updateUser(Long UserId,User user);
-    boolean authentificateAdmin(String username,String password);
-    boolean authentificateAdminDDRH(String username,String password);
-    boolean authentificateChefDRH(String username,String password);
+    //boolean authentificateAdmin(String username,String password);
+    //boolean authentificateAdminDDRH(String username,String password);
+    //boolean authentificateChefDRH(String username,String password);
+    User authenticate(String username, String password);
 
 }
