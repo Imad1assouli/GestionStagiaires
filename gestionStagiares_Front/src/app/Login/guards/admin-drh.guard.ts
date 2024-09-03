@@ -23,7 +23,7 @@ export class adminDRHGuard implements CanActivate {
       // Store the attempted URL for redirection after login
       this.login.redirectUrl = state.url;
       // If not authenticated or not an admin, navigate to login page
-      return this.router.createUrlTree(['/login']);
+      return this.router.createUrlTree(['']);
     }
   }
 }

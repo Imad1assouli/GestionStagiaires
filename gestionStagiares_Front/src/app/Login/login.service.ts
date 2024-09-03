@@ -30,7 +30,7 @@ export class LoginService {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
     this.loggedIn.next(false);
-    this.router.navigate(['<']);
+    this.router.navigate(['']);
   }
 
   isLoggedIn(): Observable<boolean> {
