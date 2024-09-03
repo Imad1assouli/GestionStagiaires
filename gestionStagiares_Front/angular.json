@@ -20,8 +20,8 @@
               "zone.js"
             ],
             "allowedCommonJsDependencies": [
-                         "html2canvas"
-           ],
+              "html2canvas"
+            ],
             "tsConfig": "tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
@@ -38,8 +38,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "750kb",
+                  "maximumError": "1.2mb"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -47,7 +47,9 @@
                   "maximumError": "4kb"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "buildOptimizer": true,
+              "optimization": true
             },
             "development": {
               "buildOptimizer": false,
