@@ -18,7 +18,7 @@ pipeline {
         stage('Build Backend') {
             steps {
                 script {
-                    dir('backend') {
+                    dir('GestionStagiaires') {
                         sh './mvnw clean package -DskipTests'
                     }
                 }
@@ -28,7 +28,7 @@ pipeline {
         stage('Build Frontend') {
             steps {
                 script {
-                    dir('frontend') {
+                    dir('gestionStagiares_Front') {
                         sh 'npm install'
                         sh 'npm run build'
                     }
@@ -39,7 +39,7 @@ pipeline {
         stage('Test Backend') {
             steps {
                 script {
-                    dir('backend') {
+                    dir('GestionStagiaires') {
                         sh './mvnw test'
                     }
                 }
@@ -49,7 +49,7 @@ pipeline {
         stage('Test Frontend') {
             steps {
                 script {
-                    dir('frontend') {
+                    dir('gestionStagiares_Front') {
                         sh 'npm test'
                     }
                 }
@@ -59,10 +59,10 @@ pipeline {
         stage('Build Docker Images') {
             steps {
                 script {
-                    dir('backend') {
+                    dir('GestionStagiaires') {
                         sh "docker build -t ${BACKEND_IMAGE} ."
                     }
-                    dir('frontend') {
+                    dir('gestionStagiares_Front') {
                         sh "docker build -t ${FRONTEND_IMAGE} ."
                     }
                 }
